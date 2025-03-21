@@ -5,6 +5,7 @@ using PlanShare.Api.Token;
 using PlanShare.Application;
 using PlanShare.Domain.Security.Tokens;
 using PlanShare.Infrastructure;
+using PlanShare.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,6 +57,8 @@ builder.Services.AddMvc(options => options.Filters.Add<ExceptionFilter>());
 builder.Services.AddScoped<ITokenProvider, HttpContextTokenValue>();
 
 builder.Services.AddHttpContextAccessor();
+
+var type = builder.Configuration.GetDatabaseType(); // Remover após o teste!
 
 var app = builder.Build();
 
