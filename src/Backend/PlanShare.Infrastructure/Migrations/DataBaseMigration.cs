@@ -2,13 +2,19 @@
 using FluentMigrator.Runner;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.DependencyInjection;
+using MySqlConnector;
+using PlanShare.Domain.Enums;
 
 namespace PlanShare.Infrastructure.Migrations;
 public static class DataBaseMigration
 {
-    public static void Migrate(String connectionString, IServiceProvider serviceProvider)
+    public static void Migrate(DatabaseType databasetype, String connectionString, IServiceProvider serviceProvider)
     {
-        EnsureDatabaseCreatedForSqlServer(connectionString);
+        if (databasetype is DatabaseType.MySQL)
+            EnsureDatabaseCreatedForMySql(connectionString);
+        else
+            EnsureDatabaseCreatedForSqlServer(connectionString);
+
         MigrateDatabase(serviceProvider);
     }
 
@@ -28,7 +34,16 @@ public static class DataBaseMigration
         if (records.Any() == false)
             dbConnection.Execute($"CREATE DATABASE {databaseName}");
     }
+    private static void EnsureDatabaseCreatedForMySql(String connectionString)
+    {
+        var connectionStringBuilder = new MySqlConnectionStringBuilder(connectionString);
+        var databaseName = connectionStringBuilder.Database;
+        connectionStringBuilder.Remove("Database");
 
+        using var dbConnection = new MySqlConnection(connectionStringBuilder.ConnectionString);
+
+        dbConnection.Execute($"CREATE DATABASE IF NOT EXISTS {databaseName}");
+    }
     private static void MigrateDatabase(IServiceProvider serviceProvider)
     {
         var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
