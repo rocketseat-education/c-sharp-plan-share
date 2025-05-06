@@ -19,7 +19,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>PlanShare.App</ApplicationTitle>
+		<ApplicationTitle>PlanShare</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.planshare.app</ApplicationId>
