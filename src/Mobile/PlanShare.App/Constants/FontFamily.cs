@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PlanShare.App.Constants;
+public class FontFamily
+{
+    public const string MAIN_FONT_REGULAR = "RalewayRegular";
+    public const string MAIN_FONT_BLACK = "RalewayBlack";
+    public const string MAIN_FONT_THIN = "RalewayThin";
+    public const string SECONDARY_FONT_REGULAR = "WorkSansRegular";
+    public const string SECONDARY_FONT_BLACK = "WorkSansBlack";
+
+}
