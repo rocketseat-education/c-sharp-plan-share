@@ -17,10 +17,15 @@
             Text="Tarefas pequenas, grandes resultados." />
 
         <Button
+            Clicked="ButtonGoogle_Clicked"
             ImageSource="google_logo.png"
             Style="{StaticResource ButtonGoogleLogin}"
             Text="Continuar com o Google" />
-        <Button Margin="0,20,0,40" Text="Login com Email e Senha" />
+
+        <Button
+            Margin="0,20,0,40"
+            Clicked="ButtonLogin_Clicked"
+            Text="Login com Email e Senha" />
 
         <Label FontSize="18" HorizontalOptions="Center">
             <Label.FormattedText>
