@@ -1,19 +1,13 @@
+using PlanShare.App.ViewModels.Pages.OnBoarding;
+using System.Windows.Input;
+
 namespace PlanShare.App.Views.Pages.OnBoarding;
 
 public partial class OnBoardingPage : ContentPage
 {
-	public OnBoardingPage()
+    public OnBoardingPage()
 	{
 		InitializeComponent();
+		BindingContext = new OnBoardingViewModel();
 	}
-
-    private void ButtonGoogle_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private void ButtonLogin_Clicked(object sender, EventArgs e)
-    {
-
-    }
 }
