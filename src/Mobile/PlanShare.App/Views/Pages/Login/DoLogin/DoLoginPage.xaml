@@ -17,5 +17,6 @@
                 Text="Esqueceu sua senha?"
                 TextDecorations="Underline" />
         </VerticalStackLayout>
+        <Button Text="Login" />
     </VerticalStackLayout>
 </ContentPage>
