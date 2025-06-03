@@ -3,35 +3,16 @@
     x:Class="PlanShare.App.Views.Pages.User.Register.RegisterUserAccountPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:component="clr-namespace:PlanShare.App.Views.Components.Inputs"
     xmlns:fontFamily="clr-namespace:PlanShare.App.Constants">
     <VerticalStackLayout>
         <Label Style="{StaticResource PageTitle}" Text="Criar minha conta" />
 
         <Label Margin="0,20,0,50" Text="Comande sua rotina com facilidade-porque você merece mais tempo para o que ama!" />
 
-        <Label Style="{StaticResource TitleForEntry}" Text="Nome" />
-
-        <Entry
-            Placeholder="Bruce Wayne"
-            PlaceholderColor="#808080"
-            TextColor="black" />
-
-        <Label Style="{StaticResource TitleForEntry}" Text="E-Mail" />
-
-        <Entry
-            Keyboard="Email"
-            Placeholder="bruce@wayne.com"
-            PlaceholderColor="#808080"
-            TextColor="black" />
-
-        <Label Style="{StaticResource TitleForEntry}" Text="Senha" />
-
-        <Entry
-            IsPassword="True"
-            Placeholder="bruce@wayne.com"
-            PlaceholderColor="#808080"
-            TextColor="black" />
-
+        <component:EntryAndLabelComponent />
+        <component:EntryAndLabelComponent />
+        <component:EntryAndLabelComponent />
 
         <Button
             Margin="0,70,0,70"
