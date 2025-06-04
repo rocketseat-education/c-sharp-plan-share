@@ -15,7 +15,7 @@
         <component:EntryAndLabelComponent
             Title="Email"
             Keyboard="Email"
-            Placeholder="Bruce Wayne" />
+            Placeholder="bruce@wayne.com.br" />
 
         <component:EntryAndLabelComponent Title="Password" Placeholder="************" />
 
