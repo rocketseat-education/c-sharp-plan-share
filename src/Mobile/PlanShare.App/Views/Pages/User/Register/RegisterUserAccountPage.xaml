@@ -17,7 +17,7 @@
             Keyboard="Email"
             Placeholder="bruce@wayne.com.br" />
 
-        <component:EntryAndLabelComponent Title="Password" Placeholder="************" />
+        <component:EntryAndLabelPasswordComponent Title="Senha" />
 
         <Button
             Margin="0,70,0,70"
