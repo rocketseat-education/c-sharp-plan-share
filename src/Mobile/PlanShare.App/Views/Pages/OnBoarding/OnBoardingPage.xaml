@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:fontFamily="clr-namespace:PlanShare.App.Constants"
+    xmlns:resourceFile="clr-namespace:PlanShare.App.Resources"
     xmlns:viewModel="clr-namespace:PlanShare.App.ViewModels.Pages.OnBoarding"
     x:DataType="viewModel:OnBoardingViewModel"
     Shell.NavBarIsVisible="False">
@@ -30,7 +31,7 @@
             Command="{Binding LoginWithEmailAndPasswordsCommand}"
             CornerRadius="20"
             HeightRequest="60"
-            Text="Login com Email e Senha" />
+            Text="{Static resourceFile:ResourceTexts.LOGIN_WITH_EMAIL_PASSWORD}" />
 
         <VerticalStackLayout Padding="0,7,0,0" HeightRequest="40">
 
