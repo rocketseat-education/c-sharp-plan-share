@@ -10,7 +10,8 @@ public partial class OnBoardingViewModel
     [RelayCommand]
     public void LoginWithGoogle()
     {
-
+        AppTheme currentTheme = Application.Current.RequestedTheme;
+        Application.Current.UserAppTheme = currentTheme == AppTheme.Dark ? AppTheme.Light : AppTheme.Dark;
     }
 
     [RelayCommand]
