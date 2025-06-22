@@ -10,7 +10,6 @@
         <Entry
             Keyboard="{Binding Keyboard}"
             Placeholder="{Binding Placeholder}"
-            PlaceholderColor="#808080"
-            TextColor="black" />
+            Text="{Binding TextValue}" />
     </VerticalStackLayout>
 </ContentView>
