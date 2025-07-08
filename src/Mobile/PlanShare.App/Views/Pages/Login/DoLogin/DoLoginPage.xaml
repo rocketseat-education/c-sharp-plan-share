@@ -4,12 +4,17 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:components="clr-namespace:PlanShare.App.Views.Components.Inputs"
-    xmlns:fontFamily="clr-namespace:PlanShare.App.Constants">
+    xmlns:fontFamily="clr-namespace:PlanShare.App.Constants"
+    xmlns:resourceFile="clr-namespace:PlanShare.App.Resources"
+    xmlns:viewModel="clr-namespace:PlanShare.App.ViewModels.Pages.Login.DoLogin"
+    x:DataType="viewModel:DoLoginViewModel">
     <VerticalStackLayout Spacing="30">
         <Label
             Margin="0,0,0,10"
             Style="{StaticResource PageTitle}"
-            Text="Login" />
+            Text="{Binding Texto}" />
+
+        <Entry Placeholder="digite aqui..." Text="{Binding Texto}" />
 
         <components:EntryAndLabelComponent
             Title="Email"
@@ -29,8 +34,6 @@
                 Text="Esqueceu sua senha?"
                 TextDecorations="Underline" />
         </VerticalStackLayout>
-
-        <Button Text="Login" />
-
+        <Button Command="{Binding DoLoginCommand}" Text="{Static resourceFile:ResourceTexts.PHRASE_LOGIN}" />
     </VerticalStackLayout>
 </ContentPage>
