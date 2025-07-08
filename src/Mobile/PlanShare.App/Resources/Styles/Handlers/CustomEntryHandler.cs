@@ -1,4 +1,5 @@
-﻿using PlanShare.App.Extensions;
+﻿using Microsoft.Maui.Platform;
+using PlanShare.App.Extensions;
 
 namespace PlanShare.App.Resources.Styles.Handlers;
 
@@ -12,7 +13,17 @@ class CustomEntryHandler
             var cursorColor = Application.Current!.GetPrimaryColor();
             var lineColor = Application.Current!.GetLineColor();
 
-            var hexadecimal = cursorColor.ToHex();
+#if ANDROID
+
+            if (handler is not null
+            && handler.PlatformView is not null
+            && handler.PlatformView.TextCursorDrawable is not null
+            && handler.PlatformView.Background is not null)
+            {
+                handler.PlatformView.TextCursorDrawable.SetTint(cursorColor.ToPlatform());
+                handler.PlatformView.Background.SetTint(lineColor.ToPlatform());
+            }
+#endif
         });
     }
 }
