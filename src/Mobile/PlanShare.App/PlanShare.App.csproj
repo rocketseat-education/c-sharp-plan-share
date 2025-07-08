@@ -125,4 +125,12 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EditorConfigFiles Remove="C:\Users\neila\source\repos\PlanShare-master\src\Mobile\PlanShare.App\Navigation\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="C:\Users\neila\source\repos\PlanShare-master\src\Mobile\PlanShare.App\Navigation\.editorconfig" />
+	</ItemGroup>
+
 </Project>
