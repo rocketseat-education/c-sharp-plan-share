@@ -12,7 +12,7 @@ public partial class OnBoardingViewModel
     }
 
     [RelayCommand]
-    public async Task LoginWithEmailAndPasswords() => await _navigationService.GoToAsync(RoutPages.LOGIN_PAGE);
+    public async Task LoginWithEmailAndPasswords() => await _navigationService.GoToAsync(RoutePages.LOGIN_PAGE);
 
     [RelayCommand]
     public void LoginWithGoogle()
@@ -22,5 +22,5 @@ public partial class OnBoardingViewModel
     }
 
     [RelayCommand]
-    public async Task RegisterUserAccount() => await _navigationService.GoToAsync(RoutPages.USER_REGISTER_ACCOUNT_PAGE);
+    public async Task RegisterUserAccount() => await _navigationService.GoToAsync(RoutePages.USER_REGISTER_ACCOUNT_PAGE);
 }

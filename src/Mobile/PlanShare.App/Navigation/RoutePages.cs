@@ -1,5 +1,5 @@
 ﻿namespace PlanShare.App.Navigation;
-public class RoutPages
+public class RoutePages
 {
     public const string ONBOARDING_PAGE = "OnBoardingPage";
     public const string LOGIN_PAGE = "DoLoginPage";

@@ -39,8 +39,8 @@ public static class MauiProgram
     {
         appBuilder.Services.AddTransient<OnBoardingViewModel>();
          
-        appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, DoLoginViewModel>(RoutPages.LOGIN_PAGE);
-        appBuilder.Services.AddTransientWithShellRoute<RegisterUserAccountPage, RegisterUserAccountViewModel>(RoutPages.USER_REGISTER_ACCOUNT_PAGE);
+        appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, DoLoginViewModel>(RoutePages.LOGIN_PAGE);
+        appBuilder.Services.AddTransientWithShellRoute<RegisterUserAccountPage, RegisterUserAccountViewModel>(RoutePages.USER_REGISTER_ACCOUNT_PAGE);
         return appBuilder;
     }
 
