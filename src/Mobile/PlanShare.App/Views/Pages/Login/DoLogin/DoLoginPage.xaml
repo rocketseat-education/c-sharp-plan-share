@@ -12,16 +12,15 @@
         <Label
             Margin="0,0,0,10"
             Style="{StaticResource PageTitle}"
-            Text="{Binding Model.Email}" />
-
-        <Entry Placeholder="digite aqui..." Text="{Binding Model.Email}" />
+            Text="{Static resourceFile:ResourceTexts.PHRASE_LOGIN}" />
 
         <components:EntryAndLabelComponent
             Title="Email"
             Keyboard="Email"
-            Placeholder="bruce@waynetech.com" />
+            Placeholder="bruce@waynetech.com"
+            TextValue="{Binding Model.Email}" />
 
-        <components:EntryAndLabelPasswordComponent Title="Senha" />
+        <components:EntryAndLabelPasswordComponent Title="{Static resourceFile:ResourceTexts.TITLE_PASSWORD}" TextValue="{Binding Model.Password}" />
 
 
         <VerticalStackLayout
