@@ -12,9 +12,9 @@
         <Label
             Margin="0,0,0,10"
             Style="{StaticResource PageTitle}"
-            Text="{Binding Texto}" />
+            Text="{Binding Model.Email}" />
 
-        <Entry Placeholder="digite aqui..." Text="{Binding Texto}" />
+        <Entry Placeholder="digite aqui..." Text="{Binding Model.Email}" />
 
         <components:EntryAndLabelComponent
             Title="Email"
