@@ -8,6 +8,8 @@ using PlanShare.App.ViewModels.Pages.OnBoarding;
 using PlanShare.App.ViewModels.Pages.User.Register;
 using PlanShare.App.Views.Pages.Login.DoLogin;
 using PlanShare.App.Views.Pages.User.Register;
+using PlanShare.Communication.Responses;
+using System.Net.Http.Json;
 using System.Reflection;
 
 namespace PlanShare.App;
@@ -21,6 +23,7 @@ public static class MauiProgram
             .UseMauiCommunityToolkit()
             .AddNavigationService()
             .AddAppSettings()
+            .AddHttpClients()
             .AddPages()
             .ConfigureFonts(fonts =>
             {
@@ -41,7 +44,7 @@ public static class MauiProgram
     private static MauiAppBuilder AddPages(this MauiAppBuilder appBuilder)
     {
         appBuilder.Services.AddTransient<OnBoardingViewModel>();
-         
+
         appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, DoLoginViewModel>(RoutePages.LOGIN_PAGE);
         appBuilder.Services.AddTransientWithShellRoute<RegisterUserAccountPage, RegisterUserAccountViewModel>(RoutePages.USER_REGISTER_ACCOUNT_PAGE);
         return appBuilder;
@@ -64,4 +67,20 @@ public static class MauiProgram
 
         return appBuilder;
     }
+
+    private static MauiAppBuilder AddHttpClients(this MauiAppBuilder appBuilder)
+    {
+        var httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("https://sua-url-aqui.com.br")
+        };
+
+        var response = await httpClient.PostAsJsonAsync("/users", new RequestRegisterUserJson());
+
+        var result = response.Content.ReadFromJsonAsync<ResponseRegisteredUserJson>();
+
+        return appBuilder;
+    }
+
+
 }

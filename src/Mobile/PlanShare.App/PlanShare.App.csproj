@@ -143,4 +143,8 @@
 	  <None Include="C:\Users\neila\source\repos\PlanShare-master\src\Mobile\PlanShare.App\Navigation\.editorconfig" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Shared\PlanShare.Communication\PlanShare.Communication.csproj" />
+	</ItemGroup>
+
 </Project>
