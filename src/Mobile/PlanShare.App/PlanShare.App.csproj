@@ -79,6 +79,7 @@
 	<ItemGroup>
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Resources\Raw\" />
+	  <Folder Include="UseCases\Register\" />
 	</ItemGroup>
 
 	<ItemGroup>
