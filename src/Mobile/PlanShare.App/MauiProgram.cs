@@ -28,6 +28,7 @@ public static class MauiProgram
             .AddAppSettings()
             .AddHttpClients()
             .AddPages()
+            .AddUseCases()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("Raleway-Black.ttf", FontFamily.MAIN_FONT_BLACK);

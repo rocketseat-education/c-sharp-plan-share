@@ -14,7 +14,8 @@ public partial class RegisterUserAccountViewModel : ViewModelBase
     private readonly INavigationService _navigationService;
     private readonly IRegisterUserUseCase _registerUserUseCase;
 
-    public RegisterUserAccountViewModel(INavigationService navigationService, IRegisterUserUseCase registerUserUseCase)
+    public RegisterUserAccountViewModel(INavigationService navigationService,
+        IRegisterUserUseCase registerUserUseCase)
     {
         Model = new UserRegisterAccount();
 
@@ -25,7 +26,7 @@ public partial class RegisterUserAccountViewModel : ViewModelBase
     [RelayCommand]
     public async Task RegisterAccount()
     {
-        var result = await _registerUserUseCase.Execute(Model);
+        await _registerUserUseCase.Execute(Model);
     }
 
     [RelayCommand]
