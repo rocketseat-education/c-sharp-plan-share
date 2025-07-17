@@ -11,8 +11,8 @@ using PlanShare.App.ViewModels.Pages.User.Register;
 using PlanShare.App.Views.Pages.Login.DoLogin;
 using PlanShare.App.Views.Pages.User.Register;
 using PlanShare.Communication.Responses;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 using Refit;
-using System.Net.Http.Json;
 using System.Reflection;
 
 namespace PlanShare.App;
@@ -24,6 +24,7 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+            .UseSkiaSharp()
             .AddNavigationService()
             .AddAppSettings()
             .AddHttpClients()
@@ -74,7 +75,7 @@ public static class MauiProgram
 
     private static MauiAppBuilder AddHttpClients(this MauiAppBuilder appBuilder)
     {
-       var apiUrl = appBuilder.Configuration.GetValue<string>("ApiUrl")!;
+        var apiUrl = appBuilder.Configuration.GetValue<string>("ApiUrl")!;
 
         appBuilder.Services.AddRefitClient<IUserApi>()
            .ConfigureHttpClient(c => c.BaseAddress = new Uri(apiUrl));
