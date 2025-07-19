@@ -14,6 +14,7 @@ using PlanShare.Communication.Responses;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using Refit;
 using System.Reflection;
+using PlanShare.App.UseCases.Login;
 
 namespace PlanShare.App;
 public static class MauiProgram
@@ -50,7 +51,7 @@ public static class MauiProgram
     {
         appBuilder.Services.AddTransient<OnBoardingViewModel>();
 
-        appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, DoLoginViewModel>(RoutePages.LOGIN_PAGE);
+        appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, LoginViewModel>(RoutePages.LOGIN_PAGE);
         appBuilder.Services.AddTransientWithShellRoute<RegisterUserAccountPage, RegisterUserAccountViewModel>(RoutePages.USER_REGISTER_ACCOUNT_PAGE);
         return appBuilder;
     }
@@ -80,12 +81,16 @@ public static class MauiProgram
         appBuilder.Services.AddRefitClient<IUserApi>()
            .ConfigureHttpClient(c => c.BaseAddress = new Uri(apiUrl));
 
+        appBuilder.Services.AddRefitClient<ILoginApi>()
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri(apiUrl));
+
         return appBuilder;
     }
 
     private static MauiAppBuilder AddUseCases(this MauiAppBuilder appBuilder)
     {
         appBuilder.Services.AddTransient<IRegisterUserUseCase, RegisterUserUseCase>();
+        appBuilder.Services.AddTransient<ILoginUseCase, LoginUseCase>();
 
         return appBuilder;
     }

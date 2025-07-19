@@ -18,7 +18,6 @@ public partial class RegisterUserAccountViewModel : ViewModelBase
         IRegisterUserUseCase registerUserUseCase)
     {
         Model = new UserRegisterAccount();
-
         _navigationService = navigationService;
         _registerUserUseCase = registerUserUseCase;
     }
