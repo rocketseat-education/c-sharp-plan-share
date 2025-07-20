@@ -29,9 +29,16 @@ public partial class RegisterUserAccountViewModel : ViewModelBase
         var result = await _registerUserUseCase.Execute(Model);
         StatusPage = StatusPage.Default;
 
-        if (result.IsSuccess)
-            await _navigationService.GoToAsync(RoutePages.ERROR_PAGE);
-        
+        if (result.IsSuccess == false)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                {"errors", result.ErrorMessages!}
+            };
+
+            await _navigationService.GoToAsync(RoutePages.ERROR_PAGE, parameters);
+        }
+
     }
 
     [RelayCommand]

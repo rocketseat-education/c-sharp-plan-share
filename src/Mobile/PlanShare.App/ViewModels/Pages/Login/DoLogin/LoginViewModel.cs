@@ -27,7 +27,15 @@ public partial class LoginViewModel : ViewModelBase
         var result = await _loginUseCase.Execute(Model);
 
         if (result.IsSuccess == false)
-            await _navigationService.GoToAsync(RoutePages.ERROR_PAGE);
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                {"errors", result.ErrorMessages!}
+            };
+
+            await _navigationService.GoToAsync(RoutePages.ERROR_PAGE, parameters);
+        }
+            
          
         StatusPage = Models.StatusPage.Default;
     }
