@@ -3,7 +3,10 @@ using Microsoft.Extensions.Configuration;
 using PlanShare.App.Constants;
 using PlanShare.App.Data.Network.Api;
 using PlanShare.App.Navigation;
+using PlanShare.App.Network.Storage.Preferences.User;
+using PlanShare.App.Network.Storage.SecureStorage.Tokens;
 using PlanShare.App.Resources.Styles.Handlers;
+using PlanShare.App.UseCases.Login;
 using PlanShare.App.UseCases.User.Register;
 using PlanShare.App.ViewModels.Pages.Login.DoLogin;
 using PlanShare.App.ViewModels.Pages.OnBoarding;
@@ -11,10 +14,9 @@ using PlanShare.App.ViewModels.Pages.User.Register;
 using PlanShare.App.Views.Pages.Login.DoLogin;
 using PlanShare.App.Views.Pages.User.Register;
 using PlanShare.Communication.Responses;
-using SkiaSharp.Views.Maui.Controls.Hosting;
 using Refit;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
-using PlanShare.App.UseCases.Login;
 
 namespace PlanShare.App;
 public static class MauiProgram
@@ -31,6 +33,7 @@ public static class MauiProgram
             .AddHttpClients() 
             .AddPages()
             .AddUseCases()
+            .AddStorage()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("Raleway-Black.ttf", FontFamily.MAIN_FONT_BLACK);
@@ -91,6 +94,18 @@ public static class MauiProgram
     {
         appBuilder.Services.AddTransient<IRegisterUserUseCase, RegisterUserUseCase>();
         appBuilder.Services.AddTransient<ILoginUseCase, LoginUseCase>();
+
+        return appBuilder;
+    }
+
+    private static MauiAppBuilder AddStorage(this MauiAppBuilder appBuilder)
+    {
+        appBuilder.Services.AddSingleton<IUserStorage, UserStorage>();
+
+        if (DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.DeviceType == DeviceType.Virtual)
+            appBuilder.Services.AddSingleton<ITokensStorage, TokensStorageForVirtualDevice>();
+        else
+            appBuilder.Services.AddSingleton<ITokensStorage, TokensStorage>();
 
         return appBuilder;
     }
