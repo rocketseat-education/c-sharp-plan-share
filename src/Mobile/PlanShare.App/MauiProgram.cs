@@ -28,7 +28,7 @@ public static class MauiProgram
             .UseSkiaSharp()
             .AddNavigationService()
             .AddAppSettings()
-            .AddHttpClients()
+            .AddHttpClients() 
             .AddPages()
             .AddUseCases()
             .ConfigureFonts(fonts =>

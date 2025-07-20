@@ -78,6 +78,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Network\Storage\Preferences\User\" />
+	  <Folder Include="Network\Storage\SecureStorage\Tokens\" />
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Resources\Raw\" />
 	  <Folder Include="UseCases\Register\" />
