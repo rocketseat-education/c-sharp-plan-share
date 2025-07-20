@@ -5,12 +5,13 @@ using PlanShare.App.Models.ValueObjects;
 using PlanShare.App.Network.Storage.Preferences.User;
 using PlanShare.App.Network.Storage.SecureStorage.Tokens;
 using PlanShare.Communication.Requests;
+using System.Text.Json;
+using PlanShare.Communication.Responses;
 
 namespace PlanShare.App.UseCases.User.Register;
+
 public class RegisterUserUseCase : IRegisterUserUseCase
 {
-
-
     private readonly IUserApi _userApi;
     private readonly IUserStorage _userStorage;
     private readonly ITokensStorage _tokensStorage;
@@ -33,11 +34,19 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 
         var response = await _userApi.Register(request);
 
-        var user = new Models.ValueObjects.User(response.Content.Id, response.Content.Name);
-        var tokens = new Models.ValueObjects.Tokens(response.Content.Tokens.AccessToken, response.Content.Tokens.RefreshToken);
+        if (response.IsSuccessful)
+        {
+            var user = new Models.ValueObjects.User(response.Content.Id, response.Content.Name);
+            var tokens = new Models.ValueObjects.Tokens(response.Content.Tokens.AccessToken,
+                response.Content.Tokens.RefreshToken);
 
-        _userStorage.Save(user);
-        await _tokensStorage.Save(tokens);
+            _userStorage.Save(user);
+            await _tokensStorage.Save(tokens);
 
+        }
+        else
+        {
+            var errors = await response.Error.GetContentAsAsync<ResponseErrorJson>();
+        }
     }
 }

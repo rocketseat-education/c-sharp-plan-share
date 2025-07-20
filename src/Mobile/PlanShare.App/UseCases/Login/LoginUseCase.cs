@@ -1,7 +1,10 @@
-﻿using PlanShare.App.Data.Network.Api;
+﻿using PlanShare.App.Models.ValueObjects;
+using PlanShare.App.Network.Api;
 using PlanShare.App.Network.Storage.Preferences.User;
 using PlanShare.App.Network.Storage.SecureStorage.Tokens;
 using PlanShare.Communication.Requests;
+using PlanShare.Communication.Responses;
+using System.Text.Json;
 
 namespace PlanShare.App.UseCases.Login;
 
@@ -17,7 +20,7 @@ public class LoginUseCase : ILoginUseCase
         _userStorage = userStorage;
         _tokensStorage = tokensStorage;
     }
-    
+
     public async Task Execute(Models.Login model)
     {
         var request = new RequestLoginJson
@@ -26,14 +29,20 @@ public class LoginUseCase : ILoginUseCase
             Password = model.Password
         };
 
-        var result = await _loginApi.Login(request);
+        var response = await _loginApi.Login(request);
 
-        var user = new Models.ValueObjects.User(result.Content.Id, result.Content.Name);
-        var tokens = new Models.ValueObjects.Tokens(result.Content.Tokens.AccessToken, result.Content.Tokens.RefreshToken);
+        if (response.IsSuccessful)
+        {
+            var user = new Models.ValueObjects.User(response.Content.Id, response.Content.Name);
+            var tokens = new Models.ValueObjects.Tokens(response.Content.Tokens.AccessToken,
+                response.Content.Tokens.RefreshToken);
 
-        _userStorage.Save(user);
-        await _tokensStorage.Save(tokens);
-
+            _userStorage.Save(user);
+            await _tokensStorage.Save(tokens);
+        }
+        else
+        {
+            var errors = await response.Error.GetContentAsAsync<ResponseErrorJson>();
+        }
     }
-
 }
