@@ -21,7 +21,7 @@ public partial class LoginViewModel : ViewModelBase
     public async Task DoLogin()
     {   
         StatusPage = Models.StatusPage.Sending;
-        await _loginUseCase.Execute(Model);
+        var result = await _loginUseCase.Execute(Model);
         StatusPage = Models.StatusPage.Default;
     }
 }

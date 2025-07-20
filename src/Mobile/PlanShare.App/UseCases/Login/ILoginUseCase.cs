@@ -4,5 +4,5 @@ namespace PlanShare.App.UseCases.Login;
 
 public interface ILoginUseCase
 {
-    Task Execute(Models.Login model);
+    Task<Result> Execute(Models.Login model);
 }

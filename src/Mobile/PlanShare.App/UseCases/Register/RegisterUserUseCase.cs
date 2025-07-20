@@ -23,7 +23,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         _tokensStorage = tokensStorage;
     }
 
-    public async Task Execute(UserRegisterAccount model)
+    public async Task<Result> Execute(UserRegisterAccount model)
     {
         var request = new RequestRegisterUserJson
         {
@@ -42,11 +42,10 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 
             _userStorage.Save(user);
             await _tokensStorage.Save(tokens);
+            return Result.Success();
+        }
 
-        }
-        else
-        {
-            var errorResponse = await response.Error.GetResponseError();
-        }
+        var errorResponse = await response.Error.GetResponseError();
+        return Result.Failure(errorResponse.Errors);
     }
 }

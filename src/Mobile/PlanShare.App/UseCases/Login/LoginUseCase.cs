@@ -3,10 +3,7 @@ using PlanShare.App.Network.Api;
 using PlanShare.App.Network.Storage.Preferences.User;
 using PlanShare.App.Network.Storage.SecureStorage.Tokens;
 using PlanShare.Communication.Requests;
-using PlanShare.Communication.Responses;
-using System.Text.Json;
 using PlanShare.App.Extensions;
-using PlanShare.App.Resources;
 
 namespace PlanShare.App.UseCases.Login;
 
@@ -23,7 +20,7 @@ public class LoginUseCase : ILoginUseCase
         _tokensStorage = tokensStorage;
     }
 
-    public async Task Execute(Models.Login model)
+    public async Task<Result> Execute(Models.Login model)
     {
         var request = new RequestLoginJson
         {
@@ -41,10 +38,11 @@ public class LoginUseCase : ILoginUseCase
 
             _userStorage.Save(user);
             await _tokensStorage.Save(tokens);
+
+            return Result.Success();
         }
-        else
-        {
-            var errorResponse = await response.Error.GetResponseError();
-        }
+
+        var errorResponse = await response.Error.GetResponseError();
+        return Result.Failure(errorResponse.Errors);
     }
 }

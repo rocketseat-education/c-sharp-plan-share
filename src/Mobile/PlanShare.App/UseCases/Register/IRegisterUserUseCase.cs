@@ -4,5 +4,5 @@ using PlanShare.App.Models.ValueObjects;
 namespace PlanShare.App.UseCases.User.Register;
 public interface IRegisterUserUseCase
 {
-    Task Execute(UserRegisterAccount model);
+    Task<Result> Execute(UserRegisterAccount model);
 }
