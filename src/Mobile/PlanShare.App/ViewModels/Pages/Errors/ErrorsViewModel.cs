@@ -15,6 +15,15 @@ public partial class ErrorsViewModel : ObservableObject, IQueryAttributable
     public ErrorsViewModel(INavigationService navigationService)
     {
         _navigationService = navigationService;
+
+        ErrorsList = new ObservableCollection<string>()
+        {
+            "Error 1: Invalid input",
+            "Error 2: Network connection lost",
+            "Error 3: File not found"
+        };
+
+
     }
 
     [RelayCommand]
