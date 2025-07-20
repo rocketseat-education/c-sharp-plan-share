@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PlanShare.App.Navigation;
 using PlanShare.App.UseCases.Login;
 
 namespace PlanShare.App.ViewModels.Pages.Login.DoLogin;
@@ -10,11 +11,13 @@ public partial class LoginViewModel : ViewModelBase
     public Models.Login model;
 
     private readonly ILoginUseCase _loginUseCase;
+    private readonly INavigationService _navigationService;
 
-    public LoginViewModel(ILoginUseCase loginUseCase)
+    public LoginViewModel(ILoginUseCase loginUseCase, INavigationService navigationService)
     {
         Model = new Models.Login();
         _loginUseCase = loginUseCase;
+        _navigationService = navigationService;
     }
 
     [RelayCommand]
@@ -22,6 +25,10 @@ public partial class LoginViewModel : ViewModelBase
     {   
         StatusPage = Models.StatusPage.Sending;
         var result = await _loginUseCase.Execute(Model);
+
+        if (result.IsSuccess == false)
+            await _navigationService.GoToAsync(RoutePages.ERROR_PAGE);
+         
         StatusPage = Models.StatusPage.Default;
     }
 }

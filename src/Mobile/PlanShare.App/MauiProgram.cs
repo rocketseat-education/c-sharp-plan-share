@@ -19,6 +19,7 @@ using Refit;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
 using PlanShare.App.Network;
+using PlanShare.App.ViewModels.Pages.Errors;
 
 namespace PlanShare.App;
 public static class MauiProgram
@@ -55,6 +56,8 @@ public static class MauiProgram
     private static MauiAppBuilder AddPages(this MauiAppBuilder appBuilder)
     {
         appBuilder.Services.AddTransient<OnBoardingViewModel>();
+
+        appBuilder.Services.AddTransientWithShellRoute<Views.Pages.Errors.ErrorsPage, ErrorsViewModel>(RoutePages.ERROR_PAGE);
 
         appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, LoginViewModel>(RoutePages.LOGIN_PAGE);
         appBuilder.Services.AddTransientWithShellRoute<RegisterUserAccountPage, RegisterUserAccountViewModel>(RoutePages.USER_REGISTER_ACCOUNT_PAGE);

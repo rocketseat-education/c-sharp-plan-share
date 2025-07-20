@@ -82,6 +82,7 @@
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Resources\Raw\" />
 	  <Folder Include="UseCases\Register\" />
+	  <Folder Include="ViewModels\Pages\Errors\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -89,6 +90,9 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>ResourceTexts.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Pages\Errors\ErrorsPage.xaml.cs">
+	    <DependentUpon>ErrorsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -113,6 +117,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\LabelStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\Errors\ErrorsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Components\Inputs\EntryAndLabelComponent.xaml">

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PlanShare.App.Views.Pages.Errors.ErrorsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontFamily="clr-namespace:PlanShare.App.Constants"
+    xmlns:resources="clr-namespace:PlanShare.App.Resources"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModel="clr-namespace:PlanShare.App.ViewModels.Pages.Errors"
+    x:DataType="viewModel:ErrorsViewModel"
+    Shell.NavBarIsVisible="False">
+    <VerticalStackLayout>
+        <Grid Margin="0,0,0,70">
+            <Image Source="icon_circles.png">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource PRIMARY_COLOR_LIGHT}, Dark={StaticResource PRIMARY_COLOR_DARK}}" />
+                </Image.Behaviors>
+            </Image>
+
+            <Image
+                Margin="90,40,0,0"
+                HeightRequest="72"
+                Source="icon_close.png"
+                WidthRequest="72">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource DANGER_ACTION_COLOR_LIGHT}, Dark={StaticResource DANGER_ACTION_COLOR_DARK}}" />
+                </Image.Behaviors>
+            </Image>
+        </Grid>
+
+        <Label
+            FontFamily="{Static fontFamily:FontFamily.MAIN_FONT_BLACK}"
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text="OOOOPPS!" />
+
+        <Label
+            Margin="0,25,0,40"
+            FontSize="18"
+            HorizontalOptions="Center"
+            Text="{Static resources:ResourceTexts.FOLLOWING_ERRORS_WERE_FOUND}" />
+
+        <CollectionView ItemsSource="{Binding ErrorsList}" VerticalScrollBarVisibility="Never">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <HorizontalStackLayout Margin="0,0,0,20" Spacing="20">
+                        <Image Source="icon_arrow.png">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource PRIMARY_COLOR_LIGHT}, Dark={StaticResource PRIMARY_COLOR_DARK}}" />
+                            </Image.Behaviors>
+                        </Image>
+
+                        <Label Text="{Binding .}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Margin="0,70,0,0"
+            Command="{Binding CloseCommand}"
+            CornerRadius="20"
+            HeightRequest="60"
+            Text="{Static resources:ResourceTexts.TRY_IT_AGAIN}"
+            TextTransform="Uppercase" />
+    </VerticalStackLayout>
+</ContentPage>
