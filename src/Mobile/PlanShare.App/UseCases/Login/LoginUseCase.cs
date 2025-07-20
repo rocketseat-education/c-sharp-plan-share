@@ -5,6 +5,8 @@ using PlanShare.App.Network.Storage.SecureStorage.Tokens;
 using PlanShare.Communication.Requests;
 using PlanShare.Communication.Responses;
 using System.Text.Json;
+using PlanShare.App.Extensions;
+using PlanShare.App.Resources;
 
 namespace PlanShare.App.UseCases.Login;
 
@@ -42,7 +44,7 @@ public class LoginUseCase : ILoginUseCase
         }
         else
         {
-            var errors = await response.Error.GetContentAsAsync<ResponseErrorJson>();
+            var errorResponse = await response.Error.GetResponseError();
         }
     }
 }

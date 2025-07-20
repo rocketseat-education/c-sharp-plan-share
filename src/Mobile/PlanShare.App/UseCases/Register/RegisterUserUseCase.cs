@@ -46,7 +46,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         }
         else
         {
-            var errors = await response.Error.GetContentAsAsync<ResponseErrorJson>();
+            var errorResponse = await response.Error.GetResponseError();
         }
     }
 }
