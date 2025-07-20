@@ -18,6 +18,7 @@ using PlanShare.Communication.Responses;
 using Refit;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
+using PlanShare.App.Network;
 
 namespace PlanShare.App;
 public static class MauiProgram
@@ -80,13 +81,17 @@ public static class MauiProgram
 
     private static MauiAppBuilder AddHttpClients(this MauiAppBuilder appBuilder)
     {
+        appBuilder.Services.AddSingleton<PlanShareHandler>();
+
         var apiUrl = appBuilder.Configuration.GetValue<string>("ApiUrl")!;
 
         appBuilder.Services.AddRefitClient<IUserApi>()
-           .ConfigureHttpClient(c => c.BaseAddress = new Uri(apiUrl));
+           .ConfigureHttpClient(c => c.BaseAddress = new Uri(apiUrl))
+           .AddHttpMessageHandler<PlanShareHandler>();
 
         appBuilder.Services.AddRefitClient<ILoginApi>()
-            .ConfigureHttpClient(c => c.BaseAddress = new Uri(apiUrl));
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri(apiUrl))
+            .AddHttpMessageHandler<PlanShareHandler>();
 
         return appBuilder;
     }
