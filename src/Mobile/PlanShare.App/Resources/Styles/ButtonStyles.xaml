@@ -12,4 +12,15 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource SECONDARY_COLOR_DARK}, Light={StaticResource SECONDARY_COLOR_LIGHT}}" />
     </Style>
 
+    <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PRIMARY_COLOR_LIGHT}, Dark={StaticResource PRIMARY_COLOR_DARK}}" />
+        <Setter Property="BorderWidth" Value="2" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource PRIMARY_COLOR_LIGHT}, Dark={StaticResource PRIMARY_COLOR_DARK}}" />
+    </Style>
+
+    <Style x:Key="DangerousButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DANGER_ACTION_COLOR_LIGHT}, Dark={StaticResource DANGER_ACTION_COLOR_DARK}}" />
+    </Style>
 </ResourceDictionary>
