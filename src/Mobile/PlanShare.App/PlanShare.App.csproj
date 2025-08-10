@@ -84,6 +84,7 @@
 	  <Folder Include="UseCases\Register\" />
 	  <Folder Include="ViewModels\Pages\Errors\" />
 	  <Folder Include="ViewModels\Pages\Dashboard\" />
+	  <Folder Include="ViewModels\Pages\User\Profile\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -139,6 +140,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\OnBoarding\OnBoardingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\User\Profile\UserProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\User\Register\RegisterUserAccountPage.xaml">

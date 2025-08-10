@@ -21,6 +21,8 @@ using System.Reflection;
 using PlanShare.App.Network;
 using PlanShare.App.ViewModels.Pages.Errors;
 using PlanShare.App.ViewModels.Pages.Dashboard;
+using PlanShare.App.ViewModels.Pages.User.Profile;
+using PlanShare.App.Views.Pages.User.Profile;
 
 namespace PlanShare.App;
 public static class MauiProgram
@@ -63,6 +65,8 @@ public static class MauiProgram
 
         appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, LoginViewModel>(RoutePages.LOGIN_PAGE);
         appBuilder.Services.AddTransientWithShellRoute<RegisterUserAccountPage, RegisterUserAccountViewModel>(RoutePages.USER_REGISTER_ACCOUNT_PAGE);
+        appBuilder.Services.AddTransientWithShellRoute<UserProfilePage, UserProfileViewModel>(RoutePages.USER_UPDATE_PROFILE_PAGE);
+
         return appBuilder;
     }
 
