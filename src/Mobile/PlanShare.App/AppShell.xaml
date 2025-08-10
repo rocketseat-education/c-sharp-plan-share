@@ -6,6 +6,7 @@
     xmlns:dashboard="clr-namespace:PlanShare.App.Views.Pages.Dashboard"
     xmlns:navigation="clr-namespace:PlanShare.App.Navigation"
     xmlns:onBoarding="clr-namespace:PlanShare.App.Views.Pages.OnBoarding"
+    x:Name="ShellPlanShareApp"
     Title="PlanShare.App"
     Shell.BackgroundColor="{AppThemeBinding Light={StaticResource PAGE_BACKGROUND_COLOR_LIGHT},
                                             Dark={StaticResource PAGE_BACKGROUND_COLOR_DARK}}"
@@ -13,8 +14,13 @@
                                             Dark={StaticResource PRIMARY_COLOR_DARK}}"
     Shell.NavBarHasShadow="False">
 
+    <ShellSection x:Name="OnboardingSection">
+        <ShellContent ContentTemplate="{DataTemplate onBoarding:OnBoardingPage}" Route="{Static navigation:RoutePages.ONBOARDING_PAGE}" />
+    </ShellSection>
 
-    <ShellContent ContentTemplate="{DataTemplate onBoarding:OnBoardingPage}" Route="{Static navigation:RoutePages.ONBOARDING_PAGE}" />
-    <ShellContent ContentTemplate="{DataTemplate dashboard:DashboardPage}" Route="{Static navigation:RoutePages.DASHBOARD_PAGE}" />
+    <ShellSection x:Name="DashboardSection">
+        <ShellContent ContentTemplate="{DataTemplate dashboard:DashboardPage}" Route="{Static navigation:RoutePages.DASHBOARD_PAGE}" />
+    </ShellSection>
+
 
 </Shell>
