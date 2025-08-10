@@ -1,9 +1,14 @@
-﻿namespace PlanShare.App.ViewModels.Pages.Dashboard;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using PlanShare.App.Network.Storage.Preferences.User;
 
-public partial class DashboardViewModel : ContentPage
+namespace PlanShare.App.ViewModels.Pages.Dashboard;
+
+public partial class DashboardViewModel : ViewModelBase
 {
-    public DashboardViewModel()
+    [ObservableProperty]
+    public string userName;
+    public DashboardViewModel(IUserStorage userStorage)
     {
-        
+        UserName = userStorage.Get().Name;
     }
 }
