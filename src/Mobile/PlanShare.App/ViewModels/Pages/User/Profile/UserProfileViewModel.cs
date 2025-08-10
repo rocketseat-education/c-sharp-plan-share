@@ -10,11 +10,20 @@ public partial class UserProfileViewModel : ViewModelBase
     [ObservableProperty]
     public string userName;
 
+    [ObservableProperty] public Models.User model;
+
     private readonly INavigationService _navigationService;
 
     public UserProfileViewModel(IUserStorage userStorage, INavigationService navigationService)
     {
         UserName = userStorage.Get().Name;
+
+        Model = new Models.User
+        {
+            Name = "Neil Angelo",
+            Email = "neil.angelo@hotmail.com",
+        };
+
         _navigationService = navigationService;
     }
 }
