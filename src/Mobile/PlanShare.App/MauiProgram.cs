@@ -19,6 +19,7 @@ using Refit;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
 using PlanShare.App.Network;
+using PlanShare.App.UseCases.Profile;
 using PlanShare.App.ViewModels.Pages.Errors;
 using PlanShare.App.ViewModels.Pages.Dashboard;
 using PlanShare.App.ViewModels.Pages.User.Profile;
@@ -109,6 +110,7 @@ public static class MauiProgram
     {
         appBuilder.Services.AddTransient<IRegisterUserUseCase, RegisterUserUseCase>();
         appBuilder.Services.AddTransient<ILoginUseCase, LoginUseCase>();
+        appBuilder.Services.AddTransient<IGetUserProfileUseCase, GetUserProfileUseCase>();
 
         return appBuilder;
     }
