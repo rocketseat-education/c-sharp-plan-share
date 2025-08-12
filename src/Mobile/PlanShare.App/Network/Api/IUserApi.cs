@@ -2,7 +2,7 @@
 using PlanShare.Communication.Responses;
 using Refit;
 
-namespace PlanShare.App.Data.Network.Api;
+namespace PlanShare.App.Network.Api;
 
 public interface IUserApi
 {
