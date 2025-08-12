@@ -1,6 +1,7 @@
 ﻿using PlanShare.App.Extensions;
 using PlanShare.App.Models.ValueObjects;
 using PlanShare.App.Network.Api;
+using static Android.Graphics.ColorSpace;
 
 namespace PlanShare.App.UseCases.Profile;
 public class GetUserProfileUseCase : IGetUserProfileUseCase
@@ -16,9 +17,15 @@ public class GetUserProfileUseCase : IGetUserProfileUseCase
     {
         var response = await _userApi.GetProfile();
 
+        var model = new Models.User
+        {
+            Name = response.Content.Name,
+            Email = response.Content.Email,
+        };
+
         if (response.IsSuccessful)
         {
-            return Result.Success();
+            return Result<Models.User>.Success(model);
         }
 
         var errorResponse = await response.Error.GetResponseError();
