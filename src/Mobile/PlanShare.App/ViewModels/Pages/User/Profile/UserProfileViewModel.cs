@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using PlanShare.App.Navigation;
 using PlanShare.App.Network.Storage.Preferences.User;
 using PlanShare.App.UseCases.Profile;
@@ -18,15 +19,25 @@ public partial class UserProfileViewModel : ViewModelBase
 
     public UserProfileViewModel(IUserStorage userStorage, INavigationService navigationService, IGetUserProfileUseCase getUserProfileUseCase)
     {
-        UserName = userStorage.Get().Name;
-
-        Model = new Models.User
-        {
-            Name = "Neil Angelo",
-            Email = "neil.angelo@hotmail.com",
-        };
-
         _navigationService = navigationService;
         _getUserProfileUseCase = getUserProfileUseCase;
+    }
+
+    [RelayCommand]
+    public async Task Initialize()
+    {
+        var result = await _getUserProfileUseCase.Execute();
+        if (result.IsSuccess == false)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                {"errors", result.ErrorMessages!}
+            };
+
+            await _navigationService.GoToAsync(RoutePages.ERROR_PAGE, parameters);
+        }
+        else
+            StatusPage = Models.StatusPage.Default;
+
     }
 }

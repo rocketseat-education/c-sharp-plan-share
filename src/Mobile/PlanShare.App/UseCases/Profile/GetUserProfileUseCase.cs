@@ -13,7 +13,7 @@ public class GetUserProfileUseCase : IGetUserProfileUseCase
         _userApi = userApi;
     }
 
-    public async Task<Result> Execute()
+    public async Task<Result<Models.User>> Execute()
     {
         var response = await _userApi.GetProfile();
 
@@ -30,6 +30,6 @@ public class GetUserProfileUseCase : IGetUserProfileUseCase
 
         var errorResponse = await response.Error.GetResponseError();
 
-        return Result.Failure(errorResponse.Errors);
+        return Result<Models.User>.Failure(errorResponse.Errors);
     }
 }
