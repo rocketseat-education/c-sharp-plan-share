@@ -31,13 +31,13 @@ public partial class UserProfileViewModel : ViewModelBase
         {
             var parameters = new Dictionary<string, object>
             {
-                {"errors", result.ErrorMessages!}
+                { "errors", result.ErrorMessages! }
             };
 
             await _navigationService.GoToAsync(RoutePages.ERROR_PAGE, parameters);
         }
         else
-            StatusPage = Models.StatusPage.Default;
+            Model = result.Response!;
 
     }
 }
