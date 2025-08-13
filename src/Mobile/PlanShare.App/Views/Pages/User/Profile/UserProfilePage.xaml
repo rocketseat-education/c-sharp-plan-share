@@ -16,6 +16,10 @@
         <converters:NameToAvatarNameConverter x:Key="nameToAvatarName" />
     </ContentPage.Resources>
 
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding Path=BindingContext.InitializeCommand, Source={Reference PageUserProfile}}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <VerticalStackLayout>
         <toolkit:AvatarView
             BackgroundColor="{AppThemeBinding Light={StaticResource PRIMARY_COLOR_LIGHT},

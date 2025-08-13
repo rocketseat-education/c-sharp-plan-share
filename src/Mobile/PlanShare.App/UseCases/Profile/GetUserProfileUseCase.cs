@@ -1,7 +1,6 @@
 ﻿using PlanShare.App.Extensions;
 using PlanShare.App.Models.ValueObjects;
 using PlanShare.App.Network.Api;
-using static Android.Graphics.ColorSpace;
 
 namespace PlanShare.App.UseCases.Profile;
 public class GetUserProfileUseCase : IGetUserProfileUseCase
