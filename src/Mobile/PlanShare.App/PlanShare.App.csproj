@@ -85,6 +85,7 @@
 	  <Folder Include="ViewModels\Pages\Errors\" />
 	  <Folder Include="ViewModels\Pages\Dashboard\" />
 	  <Folder Include="ViewModels\Pages\User\Profile\" />
+	  <Folder Include="Views\Components\Skeletons\" />
 	</ItemGroup>
 
 	<ItemGroup>
