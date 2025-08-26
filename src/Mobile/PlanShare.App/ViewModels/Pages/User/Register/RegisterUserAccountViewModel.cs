@@ -11,14 +11,12 @@ public partial class RegisterUserAccountViewModel : ViewModelBase
     [ObservableProperty]
     public UserRegisterAccount model;
 
-    private readonly INavigationService _navigationService;
     private readonly IRegisterUserUseCase _registerUserUseCase;
 
     public RegisterUserAccountViewModel(INavigationService navigationService,
-        IRegisterUserUseCase registerUserUseCase)
+        IRegisterUserUseCase registerUserUseCase) : base(navigationService)
     {
         Model = new UserRegisterAccount();
-        _navigationService = navigationService;
         _registerUserUseCase = registerUserUseCase;
     }
 
@@ -30,17 +28,9 @@ public partial class RegisterUserAccountViewModel : ViewModelBase
         StatusPage = StatusPage.Default;
 
         if (result.IsSuccess == false)
-        {
-            var parameters = new Dictionary<string, object>
-            {
-                {"errors", result.ErrorMessages!}
-            };
-
-            await _navigationService.GoToAsync(RoutePages.ERROR_PAGE, parameters);
-        }
-        else
             await _navigationService.GoToAsync($"//{RoutePages.DASHBOARD_PAGE}");
-
+        else
+            await GoToPageWithErrors(result);
 
     }
 

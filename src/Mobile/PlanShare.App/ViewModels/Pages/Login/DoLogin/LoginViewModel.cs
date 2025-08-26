@@ -11,13 +11,11 @@ public partial class LoginViewModel : ViewModelBase
     public Models.Login model;
 
     private readonly ILoginUseCase _loginUseCase;
-    private readonly INavigationService _navigationService;
 
-    public LoginViewModel(ILoginUseCase loginUseCase, INavigationService navigationService)
+    public LoginViewModel(ILoginUseCase loginUseCase, INavigationService navigationService) : base(navigationService)
     {
         Model = new Models.Login();
         _loginUseCase = loginUseCase;
-        _navigationService = navigationService;
     }
 
     [RelayCommand]
@@ -26,17 +24,10 @@ public partial class LoginViewModel : ViewModelBase
         StatusPage = Models.StatusPage.Sending;
         var result = await _loginUseCase.Execute(Model);
 
-        if (result.IsSuccess == false)
-        {
-            var parameters = new Dictionary<string, object>
-            {
-                {"errors", result.ErrorMessages!}
-            };
-
-            await _navigationService.GoToAsync(RoutePages.ERROR_PAGE, parameters);
-        }else
+        if (result.IsSuccess)
             await _navigationService.GoToAsync($"//{RoutePages.DASHBOARD_PAGE}");
-
+        else
+            await GoToPageWithErrors(result);
 
         StatusPage = Models.StatusPage.Default;
     }
