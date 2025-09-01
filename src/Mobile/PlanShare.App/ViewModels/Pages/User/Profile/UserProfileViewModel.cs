@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using PlanShare.App.Navigation;
 using PlanShare.App.Network.Storage.Preferences.User;
-using PlanShare.App.UseCases.Profile;
+using PlanShare.App.UseCases.User.Profile;
 
 namespace PlanShare.App.ViewModels.Pages.User.Profile;
 

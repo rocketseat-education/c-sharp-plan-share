@@ -11,4 +11,14 @@ public interface IUserApi
 
     [Get("/users")]
     Task<IApiResponse<ResponseUserProfileJson>> GetProfile();
+
+    [Put("/users")]
+    Task<IApiResponse> UpdateProfile([Body] RequestUpdateUserJson request);
+
+    [Put("/users/change-password")]
+    Task<IApiResponse> ChangePassword([Body] RequestChangePasswordJson request);
+
+    [Multipart]
+    [Put("/users/change-photo")]
+    Task<IApiResponse> ChangeProfilePhoto(StreamPart file);
 }

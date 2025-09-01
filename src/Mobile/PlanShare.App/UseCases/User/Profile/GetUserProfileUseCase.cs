@@ -2,7 +2,7 @@
 using PlanShare.App.Models.ValueObjects;
 using PlanShare.App.Network.Api;
 
-namespace PlanShare.App.UseCases.Profile;
+namespace PlanShare.App.UseCases.User.Profile;
 public class GetUserProfileUseCase : IGetUserProfileUseCase
 {
     private readonly IUserApi _userApi;

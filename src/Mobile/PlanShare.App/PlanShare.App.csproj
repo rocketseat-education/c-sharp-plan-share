@@ -81,7 +81,8 @@
 	  <Folder Include="Network\Storage\SecureStorage\Tokens\" />
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Resources\Raw\" />
-	  <Folder Include="UseCases\Register\" />
+	  <Folder Include="UseCases\User\Update\" />
+	  <Folder Include="UseCases\User\Register\" />
 	  <Folder Include="ViewModels\Pages\Errors\" />
 	  <Folder Include="ViewModels\Pages\Dashboard\" />
 	  <Folder Include="ViewModels\Pages\User\Profile\" />
