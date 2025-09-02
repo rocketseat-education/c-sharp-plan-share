@@ -2,9 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using PlanShare.App.Constants;
 using PlanShare.App.Navigation;
-using PlanShare.App.Network.Api;
-using PlanShare.App.Network.Storage.Preferences.User;
-using PlanShare.App.Network.Storage.SecureStorage.Tokens;
 using PlanShare.App.Resources.Styles.Handlers;
 using PlanShare.App.UseCases.Login;
 using PlanShare.App.UseCases.User.Register;
@@ -17,13 +14,16 @@ using PlanShare.Communication.Responses;
 using Refit;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
-using PlanShare.App.Network;
 using PlanShare.App.ViewModels.Pages.Errors;
 using PlanShare.App.ViewModels.Pages.Dashboard;
 using PlanShare.App.ViewModels.Pages.User.Profile;
 using PlanShare.App.Views.Pages.User.Profile;
 using PlanShare.App.UseCases.User.Profile;
 using PlanShare.App.UseCases.User.Update;
+using PlanShare.App.Data.Network;
+using PlanShare.App.Data.Network.Api;
+using PlanShare.App.Data.Storage.Preferences.User;
+using PlanShare.App.Data.Storage.SecureStorage.Tokens;
 
 namespace PlanShare.App;
 public static class MauiProgram

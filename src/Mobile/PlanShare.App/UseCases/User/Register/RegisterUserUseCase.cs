@@ -1,12 +1,12 @@
 ﻿using PlanShare.App.Extensions;
 using PlanShare.App.Models;
 using PlanShare.App.Models.ValueObjects;
-using PlanShare.App.Network.Storage.Preferences.User;
-using PlanShare.App.Network.Storage.SecureStorage.Tokens;
 using PlanShare.Communication.Requests;
 using System.Text.Json;
 using PlanShare.Communication.Responses;
-using PlanShare.App.Network.Api;
+using PlanShare.App.Data.Network.Api;
+using PlanShare.App.Data.Storage.Preferences.User;
+using PlanShare.App.Data.Storage.SecureStorage.Tokens;
 
 namespace PlanShare.App.UseCases.User.Register;
 

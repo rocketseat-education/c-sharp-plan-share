@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PlanShare.App.Data.Storage.Preferences.User;
 using PlanShare.App.Navigation;
-using PlanShare.App.Network.Storage.Preferences.User;
+using PlanShare.App.Resources;
 using PlanShare.App.UseCases.User.Profile;
+using PlanShare.App.UseCases.User.Update;
 
 namespace PlanShare.App.ViewModels.Pages.User.Profile;
 
@@ -15,10 +17,16 @@ public partial class UserProfileViewModel : ViewModelBase
     [ObservableProperty] public Models.User model;
 
     private readonly IGetUserProfileUseCase _getUserProfileUseCase;
+    private readonly IUpdateUserUseCase _updateUserUseCase;
 
-    public UserProfileViewModel(IUserStorage userStorage, INavigationService navigationService, IGetUserProfileUseCase getUserProfileUseCase) : base(navigationService)
+    public UserProfileViewModel(IUserStorage userStorage,
+        INavigationService navigationService,
+        IGetUserProfileUseCase getUserProfileUseCase,
+        IUpdateUserUseCase updateUserUseCase
+        ) : base(navigationService)
     {
         _getUserProfileUseCase = getUserProfileUseCase;
+        _updateUserUseCase = updateUserUseCase; ;
     }
 
     [RelayCommand]
@@ -36,5 +44,22 @@ public partial class UserProfileViewModel : ViewModelBase
 
         StatusPage = Models.StatusPage.Default;
 
+    }
+
+    [RelayCommand]
+    public async Task UpdateProfile()
+    {
+        StatusPage = Models.StatusPage.Sending;
+
+        var result = await _updateUserUseCase.Execute(Model);
+        if (result.IsSuccess)
+        {
+
+        }
+           // await _navigationService.ShowSuccessFeedback(ResourceTexts.PROFILE_INFORMATION_SUCCESSFULLY_UPDATED);
+        else
+            await GoToPageWithErrors(result);
+
+        StatusPage = Models.StatusPage.Default;
     }
 }

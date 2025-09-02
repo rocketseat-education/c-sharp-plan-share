@@ -6,12 +6,12 @@
     xmlns:animationComponent="clr-namespace:PlanShare.App.Views.Components.StatusPage"
     xmlns:converters="clr-namespace:PlanShare.App.Converters"
     xmlns:fontFamily="clr-namespace:PlanShare.App.Constants"
+    xmlns:inputs="clr-namespace:PlanShare.App.Views.Components.Inputs"
     xmlns:models="clr-namespace:PlanShare.App.Models"
     xmlns:resourceFile="clr-namespace:PlanShare.App.Resources"
     xmlns:skeleton="clr-namespace:PlanShare.App.Views.Components.Skeletons"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModel="clr-namespace:PlanShare.App.ViewModels.Pages.User.Profile"
-    xmlns:inputs="clr-namespace:PlanShare.App.Views.Components.Inputs"
     x:Name="PageUserProfile"
     x:DataType="viewModel:UserProfileViewModel">
 
@@ -147,7 +147,7 @@
                     Text="{Static resourceFile:ResourceTexts.CHANGE_PASSWORD}" />
                 <Button
                     Grid.Column="1"
-                    IsEnabled="False"
+                    Command="{Binding UpdateProfileCommand}"
                     Text="{Static resourceFile:ResourceTexts.UPDATE_PROFILE}" />
             </Grid>
 

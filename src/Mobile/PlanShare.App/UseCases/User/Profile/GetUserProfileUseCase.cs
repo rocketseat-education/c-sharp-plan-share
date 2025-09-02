@@ -1,6 +1,6 @@
-﻿using PlanShare.App.Extensions;
+﻿using PlanShare.App.Data.Network.Api;
+using PlanShare.App.Extensions;
 using PlanShare.App.Models.ValueObjects;
-using PlanShare.App.Network.Api;
 
 namespace PlanShare.App.UseCases.User.Profile;
 public class GetUserProfileUseCase : IGetUserProfileUseCase

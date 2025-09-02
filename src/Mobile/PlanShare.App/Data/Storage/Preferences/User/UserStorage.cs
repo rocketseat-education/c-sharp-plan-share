@@ -1,4 +1,4 @@
-﻿namespace PlanShare.App.Network.Storage.Preferences.User;
+﻿namespace PlanShare.App.Data.Storage.Preferences.User;
 
 public class UserStorage : IUserStorage
 {

@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PlanShare.App.Data.Storage.Preferences.User;
 using PlanShare.App.Navigation;
-using PlanShare.App.Network.Storage.Preferences.User;
 
 namespace PlanShare.App.ViewModels.Pages.Dashboard;
 

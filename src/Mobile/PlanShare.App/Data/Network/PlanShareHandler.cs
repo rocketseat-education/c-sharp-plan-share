@@ -1,8 +1,8 @@
-﻿using PlanShare.App.Network.Storage.SecureStorage.Tokens;
+﻿using PlanShare.App.Data.Storage.SecureStorage.Tokens;
 using System.Globalization;
 using System.Net.Http.Headers;
 
-namespace PlanShare.App.Network;
+namespace PlanShare.App.Data.Network;
 public class PlanShareHandler : DelegatingHandler
 {
     private readonly ITokensStorage _tokensStorage;

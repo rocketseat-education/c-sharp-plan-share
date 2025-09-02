@@ -1,4 +1,4 @@
-﻿using PlanShare.App.Network.Storage.Preferences.User;
+﻿using PlanShare.App.Data.Storage.Preferences.User;
 
 namespace PlanShare.App;
 

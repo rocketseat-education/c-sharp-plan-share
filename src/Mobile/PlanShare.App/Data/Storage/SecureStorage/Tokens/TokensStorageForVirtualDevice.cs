@@ -1,4 +1,4 @@
-﻿namespace PlanShare.App.Network.Storage.SecureStorage.Tokens;
+﻿namespace PlanShare.App.Data.Storage.SecureStorage.Tokens;
 
 public class TokensStorageForVirtualDevice : ITokensStorage
 {
