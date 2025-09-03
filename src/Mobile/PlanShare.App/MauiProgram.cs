@@ -119,6 +119,8 @@ public static class MauiProgram
         appBuilder.Services.AddTransient<ILoginUseCase, LoginUseCase>();
         appBuilder.Services.AddTransient<IGetUserProfileUseCase, GetUserProfileUseCase>();
         appBuilder.Services.AddTransient<IUpdateUserUseCase, UpdateUserUseCase>();
+        appBuilder.Services.AddTransient<IChangeUserPasswordUseCase, ChangeUserPasswordUseCase>();
+
 
         return appBuilder;
     }
