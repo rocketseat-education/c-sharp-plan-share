@@ -1,29 +1,33 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using PlanShare.App.Constants;
+using PlanShare.App.Data.Network;
+using PlanShare.App.Data.Network.Api;
+using PlanShare.App.Data.Storage.Preferences.User;
+using PlanShare.App.Data.Storage.SecureStorage.Tokens;
 using PlanShare.App.Navigation;
 using PlanShare.App.Resources.Styles.Handlers;
 using PlanShare.App.UseCases.Login;
+using PlanShare.App.UseCases.User.ChangePassword;
+using PlanShare.App.UseCases.User.Profile;
 using PlanShare.App.UseCases.User.Register;
+using PlanShare.App.UseCases.User.Update;
+using PlanShare.App.ViewModels.Pages.Dashboard;
+using PlanShare.App.ViewModels.Pages.Errors;
 using PlanShare.App.ViewModels.Pages.Login.DoLogin;
 using PlanShare.App.ViewModels.Pages.OnBoarding;
+using PlanShare.App.ViewModels.Pages.User.ChangePassword;
+using PlanShare.App.ViewModels.Pages.User.Profile;
 using PlanShare.App.ViewModels.Pages.User.Register;
 using PlanShare.App.Views.Pages.Login.DoLogin;
+using PlanShare.App.Views.Pages.User.ChangePassword;
+using PlanShare.App.Views.Pages.User.Profile;
 using PlanShare.App.Views.Pages.User.Register;
 using PlanShare.Communication.Responses;
 using Refit;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
-using PlanShare.App.ViewModels.Pages.Errors;
-using PlanShare.App.ViewModels.Pages.Dashboard;
-using PlanShare.App.ViewModels.Pages.User.Profile;
-using PlanShare.App.Views.Pages.User.Profile;
-using PlanShare.App.UseCases.User.Profile;
-using PlanShare.App.UseCases.User.Update;
-using PlanShare.App.Data.Network;
-using PlanShare.App.Data.Network.Api;
-using PlanShare.App.Data.Storage.Preferences.User;
-using PlanShare.App.Data.Storage.SecureStorage.Tokens;
 
 namespace PlanShare.App;
 public static class MauiProgram
@@ -66,9 +70,12 @@ public static class MauiProgram
 
         appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, LoginViewModel>(RoutePages.LOGIN_PAGE);
         appBuilder.Services.AddTransientWithShellRoute<RegisterUserAccountPage, RegisterUserAccountViewModel>(RoutePages.USER_REGISTER_ACCOUNT_PAGE);
-        appBuilder.Services.AddTransientWithShellRoute<UserProfilePage, UserProfileViewModel>(RoutePages.USER_UPDATE_PROFILE_PAGE);
+        appBuilder.Services.AddTransientWithShellRoute<UserProfilePage, UserProfileViewModel>
+            (RoutePages.USER_UPDATE_PROFILE_PAGE);
+        appBuilder.Services.AddTransientWithShellRoute<ChangeUserPasswordPage, ChangeUserPasswordViewModel>
+            (RoutePages.USER_CHANGE_PASSWORD_PAGE);
 
-        return appBuilder;
+        return appBuilder; 
     }
 
     private static MauiAppBuilder AddNavigationService(this MauiAppBuilder appBuilder)

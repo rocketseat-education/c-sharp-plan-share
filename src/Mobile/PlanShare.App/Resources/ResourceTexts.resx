@@ -98,17 +98,23 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	  <data name="CHANGE_PASSWORD" xml:space="preserve">
+  <data name="CHANGE_PASSWORD" xml:space="preserve">
     <value>Change password</value>
   </data>
   <data name="DELETE_ACCOUNT" xml:space="preserve">
     <value>Delete my account</value>
+  </data>
+  <data name="DELETE_PROFILE_PICTURE" xml:space="preserve">
+    <value>Delete profile picture</value>
   </data>
   <data name="FOLLOWING_ERRORS_WERE_FOUND" xml:space="preserve">
     <value>The following errors were found</value>
   </data>
   <data name="LOGIN_WITH_EMAIL_PASSWORD" xml:space="preserve">
     <value>Login with Email and Password</value>
+  </data>
+  <data name="PASSWORD_SUCCESSFULLY_CHANGED" xml:space="preserve">
+    <value>Your password has been successfully changed.</value>
   </data>
   <data name="PHRASE_ALREADY_HAS_ACCOUNT" xml:space="preserve">
     <value>Already have an account?</value>
@@ -137,17 +143,38 @@
   <data name="PHRASE_SMALL_TASKS_BIG_RESULTS" xml:space="preserve">
     <value>Small tasks, big results</value>
   </data>
+  <data name="PROFILE_INFORMATION_SUCCESSFULLY_UPDATED" xml:space="preserve">
+    <value>Your profile information has been successfully updated.</value>
+  </data>
+  <data name="PROFILE_PHOTO_SUCCESSFULLY_UPDATED" xml:space="preserve">
+    <value>Your profile photo has been successfully updated.</value>
+  </data>
   <data name="SERVER_COMMUNICATION_ERROR" xml:space="preserve">
     <value>An error occurred while communicating with the server. Please try again later.</value>
   </data>
   <data name="SUBTITLE_REGISTER_ACCOUNT" xml:space="preserve">
     <value>Control your routine with ease - because you deserve more time for what you love!</value>
   </data>
+  <data name="TAKE_PHOTO_UPLOAD" xml:space="preserve">
+    <value>Take a photo and upload it</value>
+  </data>
+  <data name="TITLE_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TITLE_CLOSE" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="TITLE_CURRENT_PASSWORD" xml:space="preserve">
+    <value>Current password</value>
+  </data>
   <data name="TITLE_EMAIL" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="TITLE_NAME" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="TITLE_NEW_PASSWORD" xml:space="preserve">
+    <value>New password</value>
   </data>
   <data name="TITLE_PASSWORD" xml:space="preserve">
     <value>Password</value>
@@ -163,5 +190,8 @@
   </data>
   <data name="UPDATE_PROFILE" xml:space="preserve">
     <value>Update profile</value>
+  </data>
+  <data name="UPLOAD_PHOTO" xml:space="preserve">
+    <value>Upload a photo</value>
   </data>
 </root>

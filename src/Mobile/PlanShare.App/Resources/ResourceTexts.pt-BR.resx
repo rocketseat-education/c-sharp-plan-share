@@ -98,17 +98,23 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	 <data name="CHANGE_PASSWORD" xml:space="preserve">
+  <data name="CHANGE_PASSWORD" xml:space="preserve">
     <value>Alterar senha</value>
   </data>
   <data name="DELETE_ACCOUNT" xml:space="preserve">
     <value>Deletar minha conta</value>
+  </data>
+  <data name="DELETE_PROFILE_PICTURE" xml:space="preserve">
+    <value>Deletar foto de perfil</value>
   </data>
   <data name="FOLLOWING_ERRORS_WERE_FOUND" xml:space="preserve">
     <value>Os seguintes erros foram encontrados</value>
   </data>
   <data name="LOGIN_WITH_EMAIL_PASSWORD" xml:space="preserve">
     <value>Login com Email e Senha</value>
+  </data>
+  <data name="PASSWORD_SUCCESSFULLY_CHANGED" xml:space="preserve">
+    <value>Sua senha foi alterada com sucesso.</value>
   </data>
   <data name="PHRASE_ALREADY_HAS_ACCOUNT" xml:space="preserve">
     <value>Já possui uma conta?</value>
@@ -137,17 +143,38 @@
   <data name="PHRASE_SMALL_TASKS_BIG_RESULTS" xml:space="preserve">
     <value>Tarefas pequenas, grandes resultados</value>
   </data>
+  <data name="PROFILE_INFORMATION_SUCCESSFULLY_UPDATED" xml:space="preserve">
+    <value>As informações do seu perfil foram atualizadas com sucesso.</value>
+  </data>
+  <data name="PROFILE_PHOTO_SUCCESSFULLY_UPDATED" xml:space="preserve">
+    <value>Sua foto de perfil foi atualizada com sucesso.</value>
+  </data>
   <data name="SERVER_COMMUNICATION_ERROR" xml:space="preserve">
     <value>Ocorreu um erro na comunicação com o servidor. Por favor, tente novamente mais tarde.</value>
   </data>
   <data name="SUBTITLE_REGISTER_ACCOUNT" xml:space="preserve">
     <value>Comande sua rotina com facilidade—porque você merece mais tempo para o que ama!</value>
   </data>
+  <data name="TAKE_PHOTO_UPLOAD" xml:space="preserve">
+    <value>Tirar foto e fazer upload</value>
+  </data>
+  <data name="TITLE_CANCEL" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="TITLE_CLOSE" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="TITLE_CURRENT_PASSWORD" xml:space="preserve">
+    <value>Senha atual</value>
+  </data>
   <data name="TITLE_EMAIL" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="TITLE_NAME" xml:space="preserve">
     <value>Nome</value>
+  </data>
+  <data name="TITLE_NEW_PASSWORD" xml:space="preserve">
+    <value>Nova senha</value>
   </data>
   <data name="TITLE_PASSWORD" xml:space="preserve">
     <value>Senha</value>
@@ -163,5 +190,8 @@
   </data>
   <data name="UPDATE_PROFILE" xml:space="preserve">
     <value>Atualizar perfil</value>
+  </data>
+  <data name="UPLOAD_PHOTO" xml:space="preserve">
+    <value>Fazer upload de uma foto</value>
   </data>
 </root>

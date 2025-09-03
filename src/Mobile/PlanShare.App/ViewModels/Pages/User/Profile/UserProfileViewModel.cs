@@ -54,12 +54,14 @@ public partial class UserProfileViewModel : ViewModelBase
         var result = await _updateUserUseCase.Execute(Model);
         if (result.IsSuccess)
         {
-
+          await _navigationService.ShowSuccessFeedback(ResourceTexts.PROFILE_INFORMATION_SUCCESSFULLY_UPDATED);
         }
-           // await _navigationService.ShowSuccessFeedback(ResourceTexts.PROFILE_INFORMATION_SUCCESSFULLY_UPDATED);
         else
             await GoToPageWithErrors(result);
 
         StatusPage = Models.StatusPage.Default;
     }
+
+    [RelayCommand]
+    public async Task ChangePassword() => await _navigationService.GoToAsync(RoutePages.USER_CHANGE_PASSWORD_PAGE);
 }
