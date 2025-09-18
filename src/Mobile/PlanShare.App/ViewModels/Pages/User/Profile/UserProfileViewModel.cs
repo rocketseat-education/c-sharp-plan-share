@@ -1,10 +1,14 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PlanShare.App.Data.Storage.Preferences.User;
+using PlanShare.App.Extensions;
 using PlanShare.App.Navigation;
 using PlanShare.App.Resources;
 using PlanShare.App.UseCases.User.Profile;
 using PlanShare.App.UseCases.User.Update;
+using PlanShare.App.Constants;
 
 namespace PlanShare.App.ViewModels.Pages.User.Profile;
 
@@ -51,10 +55,27 @@ public partial class UserProfileViewModel : ViewModelBase
     {
         StatusPage = Models.StatusPage.Sending;
 
-        var result = await _updateUserUseCase.Execute(Model);
-        if (result.IsSuccess)
+        var result = Models.ValueObjects.Result.Success(); // await _updateUserUseCase.Execute(Model);
+        if (result.IsSuccess) 
         {
-          await _navigationService.ShowSuccessFeedback(ResourceTexts.PROFILE_INFORMATION_SUCCESSFULLY_UPDATED);
+            var font = Microsoft.Maui.Font.OfSize(FontFamily.MAIN_FONT_BLACK, 14);
+            var snackBarOptions = new SnackbarOptions
+            {
+                BackgroundColor = Application.Current!.GetHighlightColor(),
+                TextColor = Application.Current!.GetSecondaryColor(),
+                CornerRadius = new CornerRadius(10),
+                ActionButtonTextColor = Application.Current!.GetSecondaryColor(),
+                Font = font,
+                CharacterSpacing = 0.10
+            };
+
+            var duration = TimeSpan.FromSeconds(10);
+            var snackBar = Snackbar.Make("Dados Atualizados com sucesso",
+                action: null,
+                actionButtonText: "fechar",
+                duration,
+                snackBarOptions);
+            await snackBar.Show();
         }
         else
             await GoToPageWithErrors(result);
@@ -64,4 +85,5 @@ public partial class UserProfileViewModel : ViewModelBase
 
     [RelayCommand]
     public async Task ChangePassword() => await _navigationService.GoToAsync(RoutePages.USER_CHANGE_PASSWORD_PAGE);
+
 }
