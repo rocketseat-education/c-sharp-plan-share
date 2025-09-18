@@ -25,7 +25,7 @@ public partial class LoginViewModel : ViewModelBase
         var result = await _loginUseCase.Execute(Model);
 
         if (result.IsSuccess)
-            await _navigationService.GoToAsync($"//{RoutePages.DASHBOARD_PAGE}");
+            await _navigationService.GoToDashboardPage();
         else
             await GoToPageWithErrors(result);
 

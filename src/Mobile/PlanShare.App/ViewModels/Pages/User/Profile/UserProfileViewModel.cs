@@ -39,7 +39,7 @@ public partial class UserProfileViewModel : ViewModelBase
         StatusPage = Models.StatusPage.Loading;
 
         var result = await _getUserProfileUseCase.Execute();
-        
+
         if (result.IsSuccess)
             Model = result.Response!;
         else
@@ -56,26 +56,9 @@ public partial class UserProfileViewModel : ViewModelBase
         StatusPage = Models.StatusPage.Sending;
 
         var result = Models.ValueObjects.Result.Success(); // await _updateUserUseCase.Execute(Model);
-        if (result.IsSuccess) 
+        if (result.IsSuccess)
         {
-            var font = Microsoft.Maui.Font.OfSize(FontFamily.MAIN_FONT_BLACK, 14);
-            var snackBarOptions = new SnackbarOptions
-            {
-                BackgroundColor = Application.Current!.GetHighlightColor(),
-                TextColor = Application.Current!.GetSecondaryColor(),
-                CornerRadius = new CornerRadius(10),
-                ActionButtonTextColor = Application.Current!.GetSecondaryColor(),
-                Font = font,
-                CharacterSpacing = 0.10
-            };
-
-            var duration = TimeSpan.FromSeconds(10);
-            var snackBar = Snackbar.Make("Dados Atualizados com sucesso",
-                action: null,
-                actionButtonText: "fechar",
-                duration,
-                snackBarOptions);
-            await snackBar.Show();
+            await _navigationService.ShowSuccessFeedback(ResourceTexts.PROFILE_INFORMATION_SUCCESSFULLY_UPDATED);
         }
         else
             await GoToPageWithErrors(result);
