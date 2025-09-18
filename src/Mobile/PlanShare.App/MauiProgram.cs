@@ -20,10 +20,12 @@ using PlanShare.App.ViewModels.Pages.OnBoarding;
 using PlanShare.App.ViewModels.Pages.User.ChangePassword;
 using PlanShare.App.ViewModels.Pages.User.Profile;
 using PlanShare.App.ViewModels.Pages.User.Register;
+using PlanShare.App.ViewModels.Popups.Files;
 using PlanShare.App.Views.Pages.Login.DoLogin;
 using PlanShare.App.Views.Pages.User.ChangePassword;
 using PlanShare.App.Views.Pages.User.Profile;
 using PlanShare.App.Views.Pages.User.Register;
+using PlanShare.App.Views.Popups.Files;
 using PlanShare.Communication.Responses;
 using Refit;
 using SkiaSharp.Views.Maui.Controls.Hosting;
@@ -41,8 +43,9 @@ public static class MauiProgram
             .UseSkiaSharp()
             .AddNavigationService()
             .AddAppSettings()
-            .AddHttpClients() 
+            .AddHttpClients()
             .AddPages()
+            .AddPopups()
             .AddUseCases()
             .AddStorage()
             .ConfigureFonts(fonts =>
@@ -75,7 +78,14 @@ public static class MauiProgram
         appBuilder.Services.AddTransientWithShellRoute<ChangeUserPasswordPage, ChangeUserPasswordViewModel>
             (RoutePages.USER_CHANGE_PASSWORD_PAGE);
 
-        return appBuilder; 
+        return appBuilder;
+    }
+
+    private static MauiAppBuilder AddPopups(this MauiAppBuilder appBuilder)
+    {
+        appBuilder.Services.AddTransientPopup<OptionsForProfilePhotoPopup, OptionsForProfilePhotoViewModel>();
+
+        return appBuilder;
     }
 
     private static MauiAppBuilder AddNavigationService(this MauiAppBuilder appBuilder)
