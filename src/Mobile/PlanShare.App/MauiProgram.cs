@@ -26,7 +26,6 @@ using PlanShare.App.Views.Pages.User.ChangePassword;
 using PlanShare.App.Views.Pages.User.Profile;
 using PlanShare.App.Views.Pages.User.Register;
 using PlanShare.App.Views.Popups.Files;
-using PlanShare.Communication.Responses;
 using Refit;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
@@ -130,6 +129,7 @@ public static class MauiProgram
         appBuilder.Services.AddTransient<IGetUserProfileUseCase, GetUserProfileUseCase>();
         appBuilder.Services.AddTransient<IUpdateUserUseCase, UpdateUserUseCase>();
         appBuilder.Services.AddTransient<IChangeUserPasswordUseCase, ChangeUserPasswordUseCase>();
+
 
 
         return appBuilder;
