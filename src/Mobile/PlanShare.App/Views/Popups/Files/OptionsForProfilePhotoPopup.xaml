@@ -12,7 +12,6 @@
     BackgroundColor="{AppThemeBinding Light={StaticResource PAGE_BACKGROUND_COLOR_LIGHT},
                                       Dark={StaticResource PAGE_BACKGROUND_COLOR_DARK}}"
     VerticalOptions="End">
-
     <VerticalStackLayout>
         <VerticalStackLayout Padding="0,10,0,0" Spacing="15">
             <VerticalStackLayout.GestureRecognizers>
