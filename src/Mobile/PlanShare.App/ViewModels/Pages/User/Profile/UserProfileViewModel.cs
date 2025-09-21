@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Controls.Shapes;
 using PlanShare.App.Data.Storage.Preferences.User;
+using PlanShare.App.Models.Enums;
 using PlanShare.App.Navigation;
 using PlanShare.App.Resources;
 using PlanShare.App.UseCases.User.Profile;
@@ -27,7 +28,7 @@ public partial class UserProfileViewModel : ViewModelBase
         INavigationService navigationService,
         IGetUserProfileUseCase getUserProfileUseCase,
         IUpdateUserUseCase updateUserUseCase,
-        IPopupService popupService ) : base(navigationService)
+        IPopupService popupService) : base(navigationService)
     {
         _getUserProfileUseCase = getUserProfileUseCase;
         _updateUserUseCase = updateUserUseCase;
@@ -81,6 +82,7 @@ public partial class UserProfileViewModel : ViewModelBase
                 StrokeThickness = 0,
             }
         };
-        await _popupService.ShowPopupAsync<OptionsForProfilePhotoViewModel>(Shell.Current, popupOptions);
+        var result = await _popupService.ShowPopupAsync<OptionsForProfilePhotoViewModel, ChooseFileOption>(Shell.Current, popupOptions);
+        var fileOption = result.Result;
     }
 }
