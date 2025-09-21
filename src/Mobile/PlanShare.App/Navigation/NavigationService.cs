@@ -54,7 +54,7 @@ public class NavigationService : INavigationService
     {
         var popupOptions = new PopupOptions
         {
-            CanBeDismissedByTappingOutsideOfPopup = false,
+            CanBeDismissedByTappingOutsideOfPopup = false, // Evitar que o Popup seja fechado ao clicar fora dele
             Shadow = null,
             Shape = new RoundRectangle
             {
