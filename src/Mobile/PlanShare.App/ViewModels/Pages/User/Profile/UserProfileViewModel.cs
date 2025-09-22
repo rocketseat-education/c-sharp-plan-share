@@ -7,6 +7,7 @@ using PlanShare.App.Data.Storage.Preferences.User;
 using PlanShare.App.Models.Enums;
 using PlanShare.App.Navigation;
 using PlanShare.App.Resources;
+using PlanShare.App.UseCases.User.Photo;
 using PlanShare.App.UseCases.User.Profile;
 using PlanShare.App.UseCases.User.Update;
 using PlanShare.App.ViewModels.Popups.Files;
@@ -27,19 +28,21 @@ public partial class UserProfileViewModel : ViewModelBase
 
     private readonly IGetUserProfileUseCase _getUserProfileUseCase;
     private readonly IUpdateUserUseCase _updateUserUseCase;
-    private readonly IPopupService _popupService;
     private readonly IMediaPicker _mediaPicker;
+    private readonly IChangeUserPhotoUseCase _changeUserPhotoUseCase;
+
     public UserProfileViewModel(IUserStorage userStorage,
         INavigationService navigationService,
         IGetUserProfileUseCase getUserProfileUseCase,
         IUpdateUserUseCase updateUserUseCase,
         IPopupService popupService,
-        IMediaPicker mediaPicker) : base(navigationService)
+        IMediaPicker mediaPicker,
+        IChangeUserPhotoUseCase changeUserPhotoUseCase) : base(navigationService)
     {
         _getUserProfileUseCase = getUserProfileUseCase;
         _updateUserUseCase = updateUserUseCase;
-        _popupService = popupService;
         _mediaPicker = mediaPicker;
+        _changeUserPhotoUseCase = changeUserPhotoUseCase;
     }
 
     [RelayCommand]
@@ -106,6 +109,18 @@ public partial class UserProfileViewModel : ViewModelBase
     private async Task UpdateProfilePhoto(FileResult? photo)
     {
         if (photo is not null)
+        {
+            StatusPage = Models.StatusPage.Sending;
+
+            var result = await _changeUserPhotoUseCase.Execute(photo);
+            if (result.IsSuccess)
+                await _navigationService.ShowSuccessFeedback(ResourceTexts.PROFILE_PHOTO_SUCCESSFULLY_UPDATED);
+            else
+                await GoToPageWithErrors(result);
+
+            StatusPage = Models.StatusPage.Default;
+
             PhotoPath = photo.FullPath;
+        }
     }
 }

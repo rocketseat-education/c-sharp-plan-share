@@ -61,7 +61,7 @@ public class UsersController : ControllerBase
     [HttpPut("change-photo")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
-    //[AuthenticatedUser]
+    [AuthenticatedUser]
     public async Task<IActionResult> ChangePhotoProfile(IFormFile file,
          [FromServices] IChangeUserPhotoUseCase useCase)
     {
