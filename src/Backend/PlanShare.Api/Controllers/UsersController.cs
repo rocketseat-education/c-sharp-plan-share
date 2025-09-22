@@ -56,4 +56,13 @@ public class UsersController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpPut("change-photo")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+    [AuthenticatedUser]
+    public async Task<IActionResult> ChangePhotoProfile(IFormFile photo)
+    {
+        return NoContent();
+    }
 }
