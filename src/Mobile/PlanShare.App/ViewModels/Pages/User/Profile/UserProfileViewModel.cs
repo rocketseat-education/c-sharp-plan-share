@@ -19,20 +19,27 @@ public partial class UserProfileViewModel : ViewModelBase
     [ObservableProperty]
     public string userName;
 
-    [ObservableProperty] public Models.User model;
+    [ObservableProperty] 
+    public Models.User model;
+
+    [ObservableProperty]
+    public string? photoPath;
 
     private readonly IGetUserProfileUseCase _getUserProfileUseCase;
     private readonly IUpdateUserUseCase _updateUserUseCase;
     private readonly IPopupService _popupService;
+    private readonly IMediaPicker _mediaPicker;
     public UserProfileViewModel(IUserStorage userStorage,
         INavigationService navigationService,
         IGetUserProfileUseCase getUserProfileUseCase,
         IUpdateUserUseCase updateUserUseCase,
-        IPopupService popupService) : base(navigationService)
+        IPopupService popupService,
+        IMediaPicker mediaPicker) : base(navigationService)
     {
         _getUserProfileUseCase = getUserProfileUseCase;
         _updateUserUseCase = updateUserUseCase;
         _popupService = popupService;
+        _mediaPicker = mediaPicker;
     }
 
     [RelayCommand]
@@ -74,5 +81,31 @@ public partial class UserProfileViewModel : ViewModelBase
     public async Task ChangeProfilePhoto()
     {
         var optionSelected = await _navigationService.ShowPopup<OptionsForProfilePhotoViewModel, ChooseFileOption>();
+        switch (optionSelected)
+        {
+            case ChooseFileOption.TakePicture:
+                {
+                    var photo = await _mediaPicker.CapturePhotoAsync();
+                    await UpdateProfilePhoto(photo);
+                }
+                break;
+            case ChooseFileOption.UploadFromGallery:
+                {
+                    var photo = await _mediaPicker.PickPhotoAsync();
+                    await UpdateProfilePhoto(photo);
+                }
+                break;
+            case ChooseFileOption.DeleteCurrentPicture:
+                {
+                    PhotoPath = null;
+                }
+                break;
+        }
+    }
+
+    private async Task UpdateProfilePhoto(FileResult? photo)
+    {
+        if (photo is not null)
+            PhotoPath = photo.FullPath;
     }
 }
