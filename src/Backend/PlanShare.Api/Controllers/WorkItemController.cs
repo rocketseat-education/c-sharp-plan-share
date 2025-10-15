@@ -71,7 +71,6 @@ public class WorkItemController : ControllerBase
     public async Task<IActionResult> Update([FromServices] IUpdateWorkItemUseCase useCase, [FromRoute] Guid id, [FromBody] RequestUpdateWorkItemJson request)
     {
         await useCase.Execute(id, request);
-
         return NoContent();
     }
 }
