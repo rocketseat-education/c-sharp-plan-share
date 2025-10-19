@@ -1,41 +1,44 @@
-﻿using CommonTestUtilities.Authentication;
+﻿using CommonTestUtilities.Entities;
 using CommonTestUtilities.Repositories;
 using CommonTestUtilities.Requests;
-using CommonTestUtilities.Security.Cryptography;
-using PlanShare.Application.UseCases.User.Register;
+using CommonTestUtilities.Services.LoggedUser;
+using PlanShare.Application.UseCases.User.Update;
 using PlanShare.Domain.Extensions;
 using PlanShare.Exceptions;
 using PlanShare.Exceptions.ExceptionsBase;
 using Shouldly;
 
-namespace UseCases.Tests.User.Register;
-public class RegisterUserUseCaseTests
+namespace UseCases.Tests.User.Update;
+public class UpdateUserUseCaseTests
 {
     [Fact]
     public async Task Success()
     {
-        var request = RequestRegisterUserBuilder.Build();
+        var user = UserBuilder.Build();
+        var request = RequestUpdateUserBuilder.Build();
 
-        var useCase = CreateUseCase();
+        var useCase = CreateUseCase(user);
 
-        var result = await useCase.Execute(request);
+        var act = async () => await useCase.Execute(request);
 
-        result.ShouldNotBeNull();
-        result.Name.ShouldBe(request.Name);
-        result.Id.ShouldNotBe(Guid.Empty);
-        result.Tokens.ShouldNotBeNull();
-        result.Tokens.AccessToken.ShouldNotBeNullOrEmpty();
+        await act.ShouldNotThrowAsync();
 
+        user.Name.ShouldBe(request.Name);
+        user.Email.ShouldBe(request.Email);
     }
 
     [Fact]
     public async Task Error_EmailAlreadyRegistered()
     {
-        var request = RequestRegisterUserBuilder.Build();
-        var useCase = CreateUseCase(request.Email);
+        var user = UserBuilder.Build();
+        var request = RequestUpdateUserBuilder.Build();
+
+        var useCase = CreateUseCase(user, request.Email);
+
         var act = async () => await useCase.Execute(request);
 
         var exception = await act.ShouldThrowAsync<ErrorOnValidationException>();
+
         exception.ShouldSatisfyAllConditions(exception =>
         {
             exception.GetStatusCode().ShouldBe(System.Net.HttpStatusCode.BadRequest);
@@ -50,11 +53,14 @@ public class RegisterUserUseCaseTests
     [Fact]
     public async Task Error_Name_Empty()
     {
-        var request = RequestRegisterUserBuilder.Build();
+        var user = UserBuilder.Build();
+        var request = RequestUpdateUserBuilder.Build();
         request.Name = string.Empty;
 
-        var useCase = CreateUseCase();
+        var useCase = CreateUseCase(user);
+
         var act = async () => await useCase.Execute(request);
+
         var exception = await act.ShouldThrowAsync<ErrorOnValidationException>();
 
         exception.ShouldSatisfyAllConditions(exception =>
@@ -68,18 +74,16 @@ public class RegisterUserUseCaseTests
         });
     }
 
-    private RegisterUserUseCase CreateUseCase(string? emailAlreadyExist = null)
+    public UpdateUserUseCase CreateUseCase(PlanShare.Domain.Entities.User user, string? emailAlreadyExist = null)
     {
+        var loggedUser = LoggedUserBuilder.Build(user);
+        var userUpdateOnlyRepository = UserUpdateOnlyRepositoryBuilder.Build(user);
         var unitOfWork = UnitOfWorkBuilder.Build();
-        var userWriteOnlyRepository = UserWriteOnlyRepositoryBuilder.Build();
-        var passwordEncripter = new PasswordEncripterBuilder().Build();
-        var tokenService = TokenServiceBuilder.Build();
 
         var userReadOnlyRepository = new UserReadOnlyRepositoryBuilder();
         if (emailAlreadyExist.NotEmpty())
             userReadOnlyRepository.ExistActiveUserWithEmail(emailAlreadyExist);
 
-        return new RegisterUserUseCase(unitOfWork, userWriteOnlyRepository,
-            userReadOnlyRepository.Build(), passwordEncripter, tokenService);
+        return new UpdateUserUseCase(loggedUser, userUpdateOnlyRepository, userReadOnlyRepository.Build(), unitOfWork);
     }
 }
