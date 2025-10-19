@@ -22,19 +22,20 @@ public class RegisterUserUseCaseTests
 
         result.ShouldNotBeNull();
         result.Name.ShouldBe(request.Name);
+        result.Id.ShouldNotBe(Guid.Empty);
+        result.Tokens.ShouldNotBeNull();
+        result.Tokens.AccessToken.ShouldNotBeNullOrEmpty();
+        result.Tokens.RefreshToken.ShouldNotBeNullOrEmpty();
     }
 
     [Fact]
     public async Task Error_EmailAlreadyRegistered()
     {
         var request = RequestRegisterUserBuilder.Build();
-
         var useCase = CreateUseCase(request.Email);
-
         var act = async () => await useCase.Execute(request);
 
         var exception = await act.ShouldThrowAsync<ErrorOnValidationException>();
-
         exception.ShouldSatisfyAllConditions(exception =>
         {
             exception.GetStatusCode().ShouldBe(System.Net.HttpStatusCode.BadRequest);
@@ -53,9 +54,7 @@ public class RegisterUserUseCaseTests
         request.Name = string.Empty;
 
         var useCase = CreateUseCase();
-
         var act = async () => await useCase.Execute(request);
-
         var exception = await act.ShouldThrowAsync<ErrorOnValidationException>();
 
         exception.ShouldSatisfyAllConditions(exception =>
