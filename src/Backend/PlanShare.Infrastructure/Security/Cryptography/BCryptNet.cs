@@ -1,5 +1,7 @@
 ﻿using PlanShare.Domain.Security.Cryptography;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("CommonTestUtilities")]
 namespace PlanShare.Infrastructure.Security.Cryptography;
 internal sealed class BCryptNet : IPasswordEncripter
 {
