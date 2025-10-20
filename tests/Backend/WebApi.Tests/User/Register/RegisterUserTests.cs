@@ -12,7 +12,7 @@ using System.Text.Json;
 using WebApi.Tests.InlineData;
 
 namespace WebApi.Tests.User.Register;
-public class RegisterUserTests : IClassFixture<WebApplicationFactory<Program>>
+public class RegisterUserTests : IClassFixture<CustomWebApplicationFactory>
 {
     private readonly HttpClient _httpClient;
     public RegisterUserTests(WebApplicationFactory<Program> factory)
