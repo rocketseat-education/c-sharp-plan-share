@@ -1,4 +1,5 @@
 ﻿using Moq;
+using PlanShare.Domain.Entities;
 using PlanShare.Domain.Repositories.User;
 
 namespace CommonTestUtilities.Repositories;
@@ -18,4 +19,10 @@ public class UserReadOnlyRepositoryBuilder
     }
  
     public IUserReadOnlyRepository Build() => _mockRepository.Object;
+
+    public void GetUserByEmail(User user)
+    {
+        _mockRepository.Setup(repository => repository.GetUserByEmail(user.Email))
+            .ReturnsAsync(user);
+    }
 }
