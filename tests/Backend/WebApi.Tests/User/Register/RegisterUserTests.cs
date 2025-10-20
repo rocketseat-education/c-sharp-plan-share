@@ -11,20 +11,17 @@ using System.Text.Json;
 using WebApi.Tests.InlineData;
 
 namespace WebApi.Tests.User.Register;
-public class RegisterUserTests : IClassFixture<CustomWebApplicationFactory>
+public class RegisterUserTests :CustomClassFixture
 {
     private const string BaseUrl = "/users";
-    private readonly HttpClient _httpClient;
-    public RegisterUserTests(CustomWebApplicationFactory factory)
-    {
-        _httpClient = factory.CreateClient();
-    }
+    public RegisterUserTests(CustomWebApplicationFactory factory) : base(factory)
+    {}
 
     [Fact]
     public async Task Success()
     {
         var request = RequestRegisterUserBuilder.Build();
-        var response = await _httpClient.PostAsJsonAsync(BaseUrl, request);
+        var response = await DoPost(BaseUrl, request);
         response.StatusCode.ShouldBe(HttpStatusCode.Created);
 
         using var responseBody = await response.Content.ReadAsStreamAsync();
@@ -43,10 +40,7 @@ public class RegisterUserTests : IClassFixture<CustomWebApplicationFactory>
         var request = RequestRegisterUserBuilder.Build();
         request.Name = string.Empty;
 
-        _httpClient.DefaultRequestHeaders.AcceptLanguage.Clear();
-        _httpClient.DefaultRequestHeaders.AcceptLanguage.Add(new StringWithQualityHeaderValue(culture));
-
-        var response = await _httpClient.PostAsJsonAsync(BaseUrl, request);
+        var response = await DoPost(BaseUrl, request, culture);
 
         response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
 
