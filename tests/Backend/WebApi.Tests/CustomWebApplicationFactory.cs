@@ -1,11 +1,9 @@
 ﻿using CommonTestUtilities.Entities;
-using CommonTestUtilities.Repositories;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using PlanShare.Application.Services.Authentication;
-using PlanShare.Domain.Repositories.RefreshToken;
+using PlanShare.Domain.Security.Tokens;
 using PlanShare.Infrastructure.DataAccess;
 using WebApi.Tests.Resources;
 
@@ -26,6 +24,31 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
                     options.UseInMemoryDatabase("InMemoryDbForTesting");
                     options.UseInternalServiceProvider(provider);
                 });
+
+                using var scope = services.BuildServiceProvider().CreateScope();
+                var dbContext = scope.ServiceProvider.GetRequiredService<PlanShareDbContext>();
+                dbContext.Database.EnsureDeleted();
+
+                var tokenService = scope.ServiceProvider.GetRequiredService<IAccessTokenGenerator>();
+                StartDatabase(dbContext, tokenService);
+
             });
+    }
+
+    private void StartDatabase(PlanShareDbContext dbContext, IAccessTokenGenerator accessTokenGenerator)
+    {
+        (var user, var password) = UserBuilder.Build();
+
+        dbContext.Users.Add(user);
+        dbContext.SaveChanges();
+
+
+        var tokensDto = new PlanShare.Domain.Dtos.TokensDto()
+        {
+            Access = accessTokenGenerator.Generate(user).token
+        };
+
+
+        User = new UserIdentityManager(user, password, null);
     }
 }
