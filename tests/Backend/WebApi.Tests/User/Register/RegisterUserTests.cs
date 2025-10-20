@@ -1,11 +1,11 @@
 ﻿using CommonTestUtilities.Requests;
-using Microsoft.AspNetCore.Mvc.Testing;
 using PlanShare.Domain.Extensions;
 using PlanShare.Exceptions;
 using Shouldly;
-using System.Buffers.Text;
 using System.Globalization;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 using WebApi.Tests.InlineData;
@@ -36,11 +36,15 @@ public class RegisterUserTests : IClassFixture<CustomWebApplicationFactory>
         document.RootElement.GetProperty("tokens").GetProperty("accessToken").GetString().ShouldNotBeNullOrEmpty();
     }
 
-
-    public async Task Error_Name_Empty()
+    [Theory]
+    [ClassData(typeof(CultureInlineDataTest))]
+    public async Task Error_Name_Empty(string culture)
     {
         var request = RequestRegisterUserBuilder.Build();
         request.Name = string.Empty;
+
+        _httpClient.DefaultRequestHeaders.AcceptLanguage.Clear();
+        _httpClient.DefaultRequestHeaders.AcceptLanguage.Add(new StringWithQualityHeaderValue(culture));
 
         var response = await _httpClient.PostAsJsonAsync(BaseUrl, request);
 
@@ -52,11 +56,12 @@ public class RegisterUserTests : IClassFixture<CustomWebApplicationFactory>
 
         var errors = document.RootElement.GetProperty("errors").EnumerateArray();
 
+        var expectedMessage = ResourceMessagesException.ResourceManager.GetString("NAME_EMPTY", new CultureInfo(culture));
 
         errors.ShouldSatisfyAllConditions(erros =>
         {
             erros.Count().ShouldBe(1);
-            erros.ShouldContain(error => error.GetString().NotEmpty() && error.GetString()!.Equals(ResourceMessagesException.NAME_EMPTY));
+            erros.ShouldContain(error => error.GetString().NotEmpty() && error.GetString()!.Equals(expectedMessage));
         });
     }
 }
