@@ -22,7 +22,6 @@ public class ChangeUserPasswordSuccessTest : CustomClassFixture
         request.Password = _user.GetPassword();
 
         var response = await DoPut(BaseUrl, request, _user.GetAccessToken());
-
         response.StatusCode.ShouldBe(HttpStatusCode.NoContent);
     }
 }

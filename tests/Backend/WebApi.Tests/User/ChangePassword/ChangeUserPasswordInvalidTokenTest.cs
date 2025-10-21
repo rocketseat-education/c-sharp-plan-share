@@ -11,7 +11,7 @@ public class ChangeUserPasswordInvalidTokenTest : CustomClassFixture
     private readonly UserIdentityManager _user;
 
     public ChangeUserPasswordInvalidTokenTest(CustomWebApplicationFactory factory) : base(factory)
-    {
+    { 
         _user = factory.User;
     }
 

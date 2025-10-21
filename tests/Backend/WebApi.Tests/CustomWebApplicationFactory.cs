@@ -42,13 +42,12 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
         dbContext.Users.Add(user);
         dbContext.SaveChanges();
 
-
         var tokensDto = new PlanShare.Domain.Dtos.TokensDto()
         {
             Access = accessTokenGenerator.Generate(user).token
         };
 
 
-        User = new UserIdentityManager(user, password, null);
+        User = new UserIdentityManager(user, password, tokensDto);
     }
 }

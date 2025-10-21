@@ -8,7 +8,7 @@ using System.Text.Json;
 using WebApi.Tests.InlineData;
 using WebApi.Tests.Resources;
 
-namespace WebApi.Tests.User.ChangePassword;
+namespace WebApi.Tests.User.ChangePassword; 
 public class ChangeUserPasswordErrorTest : CustomClassFixture
 {
     private const string BaseUrl = "/users/change-password";
