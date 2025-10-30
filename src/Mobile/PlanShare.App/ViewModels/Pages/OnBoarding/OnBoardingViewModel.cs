@@ -2,13 +2,10 @@
 using PlanShare.App.Navigation;
 
 namespace PlanShare.App.ViewModels.Pages.OnBoarding;
-public partial class OnBoardingViewModel
+public partial class OnBoardingViewModel : ViewModelBase
 {
-    private readonly INavigationService _navigationService;
-
-    public OnBoardingViewModel(INavigationService navigationService)
+    public OnBoardingViewModel(INavigationService navigationService) : base(navigationService)
     {
-        _navigationService = navigationService;
     }
 
     [RelayCommand]
