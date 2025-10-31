@@ -7,6 +7,7 @@ using PlanShare.App.Navigation;
 using PlanShare.App.ViewModels.Pages.User.Register;
 using Shouldly;
 using ViewModels.Tests.Extensions;
+using Xunit.Sdk;
 
 namespace ViewModels.Tests.Pages.User.Register;
 public class RegisterUserAccountViewModelTests
@@ -21,8 +22,7 @@ public class RegisterUserAccountViewModelTests
         await act.ShouldNotThrowAsync();
 
         navigationService.Verify(service =>
-                service.GoToAsync(It.Is<ShellNavigationState>(state => 
-                state.Location.OriginalString.Equals($"../{RoutePages.LOGIN_PAGE}"))), Times.Once);
+                service.GoToAsync(GetValidationForRoutePage($"../{RoutePages.LOGIN_PAGE}")), Times.Once);
     }
 
     [Fact]
@@ -37,6 +37,34 @@ public class RegisterUserAccountViewModelTests
         viewModel.StatusPage.ShouldBe(StatusPage.Default);
 
         navigationService.Verify(service => service.GoToDashboardPage(), Times.Once);
+    }
+
+    [Fact]
+    public async Task RegisterAccount_Executed_With_Invalid_Result()
+    {
+        var (viewModel, navigationService) = CreateViewModel(Result.Failure(["Error 1"]));
+        var act = async () => await viewModel.RegisterAccountCommand.ExecuteAsync(null);
+        await act.ShouldNotThrowAsync();
+        viewModel.StatusPage.ShouldBe(StatusPage.Default);
+
+        navigationService.Verify(service =>
+               service.GoToAsync(GetValidationForRoutePage($"../{RoutePages.LOGIN_PAGE}"),
+                GetValidationForDictionaryErrors("Error 1")),
+                Times.Once);
+    }
+
+    private ShellNavigationState GetValidationForRoutePage(string route)
+    {
+        return It.Is<ShellNavigationState>(state => state.Location.OriginalString.Equals(route));
+    }
+
+    private Dictionary<string, object> GetValidationForDictionaryErrors(string errorMessage)
+    {
+        return It.Is<Dictionary<string, object>>(dictionary =>
+            dictionary.ContainsKey("errors")
+            && dictionary["errors"] is IList<string>
+            && ((IList<string>)dictionary["Errors"]).Count == 1
+                && ((IList<string>)dictionary["Errors"]).Contains(errorMessage));
     }
 
     private (RegisterUserAccountViewModel viewModel, Mock<INavigationService> navigationService) CreateViewModel(Result result)

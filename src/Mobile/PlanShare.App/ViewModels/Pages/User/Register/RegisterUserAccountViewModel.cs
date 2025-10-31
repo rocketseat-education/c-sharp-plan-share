@@ -24,14 +24,14 @@ public partial class RegisterUserAccountViewModel : ViewModelBase
     public async Task RegisterAccount()
     {
         StatusPage = StatusPage.Sending;
-        var result = await _registerUserUseCase.Execute(Model);
-        StatusPage = StatusPage.Default;
 
-        if (result.IsSuccess == false)
+        var result = await _registerUserUseCase.Execute(Model);
+        if (result.IsSuccess)
             await _navigationService.GoToDashboardPage();
         else
             await GoToPageWithErrors(result);
 
+        StatusPage = StatusPage.Default;
     }
 
     [RelayCommand]
