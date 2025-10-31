@@ -21,21 +21,16 @@ public class RegisterUserAccountViewModelTests
 
         await act.ShouldNotThrowAsync();
 
-        navigationService.Verify(service =>
-                service.GoToAsync(GetValidationForRoutePage($"../{RoutePages.LOGIN_PAGE}")), Times.Once);
+        navigationService.VerifyGoTo($"../{RoutePages.LOGIN_PAGE}", Times.Once);
     }
 
     [Fact]
     public async Task RegisterAccount_Executed_With_Valid_Result()
     {
         var (viewModel, navigationService) = CreateViewModel(Result.Success());
-
         var act = async () => await viewModel.RegisterAccountCommand.ExecuteAsync(null);
-
         await act.ShouldNotThrowAsync();
-
         viewModel.StatusPage.ShouldBe(StatusPage.Default);
-
         navigationService.Verify(service => service.GoToDashboardPage(), Times.Once);
     }
 
@@ -47,24 +42,7 @@ public class RegisterUserAccountViewModelTests
         await act.ShouldNotThrowAsync();
         viewModel.StatusPage.ShouldBe(StatusPage.Default);
 
-        navigationService.Verify(service =>
-               service.GoToAsync(GetValidationForRoutePage($"../{RoutePages.LOGIN_PAGE}"),
-                GetValidationForDictionaryErrors("Error 1")),
-                Times.Once);
-    }
-
-    private ShellNavigationState GetValidationForRoutePage(string route)
-    {
-        return It.Is<ShellNavigationState>(state => state.Location.OriginalString.Equals(route));
-    }
-
-    private Dictionary<string, object> GetValidationForDictionaryErrors(string errorMessage)
-    {
-        return It.Is<Dictionary<string, object>>(dictionary =>
-            dictionary.ContainsKey("errors")
-            && dictionary["errors"] is IList<string>
-            && ((IList<string>)dictionary["Errors"]).Count == 1
-                && ((IList<string>)dictionary["Errors"]).Contains(errorMessage));
+        navigationService.VerifyGoTo(RoutePages.ERROR_PAGE, ["Error 1"], Times.Once);
     }
 
     private (RegisterUserAccountViewModel viewModel, Mock<INavigationService> navigationService) CreateViewModel(Result result)
