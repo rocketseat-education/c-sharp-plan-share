@@ -16,11 +16,7 @@ namespace PlanShare.App.ViewModels.Pages.User.Profile;
 
 public partial class UserProfileViewModel : ViewModelBase
 {
-
     [ObservableProperty]
-    public string userName;
-
-    [ObservableProperty] 
     public Models.User model;
 
     [ObservableProperty]
@@ -28,36 +24,35 @@ public partial class UserProfileViewModel : ViewModelBase
 
     private readonly IGetUserProfileUseCase _getUserProfileUseCase;
     private readonly IUpdateUserUseCase _updateUserUseCase;
-    private readonly IMediaPicker _mediaPicker;
     private readonly IChangeUserPhotoUseCase _changeUserPhotoUseCase;
 
-    public UserProfileViewModel(IUserStorage userStorage,
+    private readonly IMediaPicker _mediaPicker;
+
+    public UserProfileViewModel(
         INavigationService navigationService,
         IGetUserProfileUseCase getUserProfileUseCase,
         IUpdateUserUseCase updateUserUseCase,
-        IPopupService popupService,
-        IMediaPicker mediaPicker,
-        IChangeUserPhotoUseCase changeUserPhotoUseCase) : base(navigationService)
+        IChangeUserPhotoUseCase changeUserPhotoUseCase,
+        IMediaPicker mediaPicker) : base(navigationService)
     {
         _getUserProfileUseCase = getUserProfileUseCase;
         _updateUserUseCase = updateUserUseCase;
-        _mediaPicker = mediaPicker;
         _changeUserPhotoUseCase = changeUserPhotoUseCase;
+        _mediaPicker = mediaPicker;
     }
 
     [RelayCommand]
     public async Task Initialize()
     {
-        //StatusPage = Models.StatusPage.Loading;
+        StatusPage = Models.StatusPage.Loading;
 
-        //var result = await _getUserProfileUseCase.Execute();
+        var result = await _getUserProfileUseCase.Execute();
+        if (result.IsSuccess)
+            Model = result.Response!;
+        else
+            await GoToPageWithErrors(result);
 
-        //if (result.IsSuccess)
-        //    Model = result.Response!;
-        //else
-        //    await GoToPageWithErrors(result); 
-
-        //StatusPage = Models.StatusPage.Default;
+        StatusPage = Models.StatusPage.Default;
     }
 
     [RelayCommand]
@@ -67,9 +62,7 @@ public partial class UserProfileViewModel : ViewModelBase
 
         var result = await _updateUserUseCase.Execute(Model);
         if (result.IsSuccess)
-        {
             await _navigationService.ShowSuccessFeedback(ResourceTexts.PROFILE_INFORMATION_SUCCESSFULLY_UPDATED);
-        }
         else
             await GoToPageWithErrors(result);
 
@@ -78,7 +71,6 @@ public partial class UserProfileViewModel : ViewModelBase
 
     [RelayCommand]
     public async Task ChangePassword() => await _navigationService.GoToAsync(RoutePages.USER_CHANGE_PASSWORD_PAGE);
-
 
     [RelayCommand]
     public async Task ChangeProfilePhoto()

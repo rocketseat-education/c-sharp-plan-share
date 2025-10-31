@@ -72,7 +72,7 @@ public static class MauiProgram
 
         appBuilder.Services.AddTransientWithShellRoute<Views.Pages.Errors.ErrorsPage, ErrorsViewModel>(RoutePages.ERROR_PAGE);
 
-        appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, LoginViewModel>(RoutePages.LOGIN_PAGE);
+        appBuilder.Services.AddTransientWithShellRoute<DoLoginPage, DoLoginViewModel>(RoutePages.LOGIN_PAGE);
         appBuilder.Services.AddTransientWithShellRoute<RegisterUserAccountPage, RegisterUserAccountViewModel>(RoutePages.USER_REGISTER_ACCOUNT_PAGE);
         appBuilder.Services.AddTransientWithShellRoute<UserProfilePage, UserProfileViewModel>
             (RoutePages.USER_UPDATE_PROFILE_PAGE);
@@ -127,7 +127,7 @@ public static class MauiProgram
     private static MauiAppBuilder AddUseCases(this MauiAppBuilder appBuilder)
     {
         appBuilder.Services.AddTransient<IRegisterUserUseCase, RegisterUserUseCase>();
-        appBuilder.Services.AddTransient<ILoginUseCase, LoginUseCase>();
+        appBuilder.Services.AddTransient<IDoLoginUseCase, DoLoginUseCase>();
         appBuilder.Services.AddTransient<IGetUserProfileUseCase, GetUserProfileUseCase>();
         appBuilder.Services.AddTransient<IUpdateUserUseCase, UpdateUserUseCase>();
         appBuilder.Services.AddTransient<IChangeUserPasswordUseCase, ChangeUserPasswordUseCase>();

@@ -28,7 +28,8 @@ public partial class ChangeUserPasswordViewModel : ViewModelBase
         var result = await _changeUserPasswordUseCase.Execute(Model);
         if (result.IsSuccess)
         {
-            await _navigationService.ShowSuccessFeedback(ResourceTexts.CHANGE_PASSWORD);
+            await _navigationService.ShowSuccessFeedback(ResourceTexts.PASSWORD_SUCCESSFULLY_CHANGED);
+
             await _navigationService.ClosePage();
         }
         else
@@ -36,6 +37,6 @@ public partial class ChangeUserPasswordViewModel : ViewModelBase
 
         StatusPage = Models.StatusPage.Default;
 
-        
+
     }
 }

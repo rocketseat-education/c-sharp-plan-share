@@ -9,7 +9,7 @@
     xmlns:models="clr-namespace:PlanShare.App.Models"
     xmlns:resourceFile="clr-namespace:PlanShare.App.Resources"
     xmlns:viewModel="clr-namespace:PlanShare.App.ViewModels.Pages.Login.DoLogin"
-    x:DataType="viewModel:LoginViewModel">
+    x:DataType="viewModel:DoLoginViewModel">
     <VerticalStackLayout>
         <VerticalStackLayout IsVisible="False" Spacing="30">
             <VerticalStackLayout.Triggers>

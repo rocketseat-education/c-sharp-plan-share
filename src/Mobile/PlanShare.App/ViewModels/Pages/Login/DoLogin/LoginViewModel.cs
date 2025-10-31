@@ -5,14 +5,14 @@ using PlanShare.App.UseCases.Login;
 
 namespace PlanShare.App.ViewModels.Pages.Login.DoLogin;
 
-public partial class LoginViewModel : ViewModelBase
+public partial class DoLoginViewModel : ViewModelBase
 {
     [ObservableProperty]
     public Models.Login model;
 
-    private readonly ILoginUseCase _loginUseCase;
+    private readonly IDoLoginUseCase _loginUseCase;
 
-    public LoginViewModel(ILoginUseCase loginUseCase, INavigationService navigationService) : base(navigationService)
+    public DoLoginViewModel(INavigationService navigationService, IDoLoginUseCase loginUseCase) : base(navigationService)
     {
         Model = new Models.Login();
         _loginUseCase = loginUseCase;
