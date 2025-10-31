@@ -15,7 +15,16 @@ public class OnBoardingViewModelTests
         var act = async () => await viewModel.LoginWithEmailAndPasswordsCommand.ExecuteAsync(null);
         await act.ShouldNotThrowAsync();
 
-        navigationService.Verify(service => service.GoToAsync("welisson"), Times.Once);
+        navigationService.Verify(service => service.GoToAsync(It.Is<ShellNavigationState>(state => state.Location.OriginalString.Equals(RoutePages.LOGIN_PAGE))), Times.Once);
+    }
+     
+    [Fact]
+    public async Task Success_RegisterUserAccount()
+    {
+        var (viewModel, navigationService) = CreateViewModel();
+        var act = async () => await viewModel.RegisterUserAccountCommand.ExecuteAsync(null);
+        await act.ShouldNotThrowAsync();
+        navigationService.Verify(service => service.GoToAsync(It.Is<ShellNavigationState>(state => state.Location.OriginalString.Equals(RoutePages.USER_REGISTER_ACCOUNT_PAGE))), Times.Once);
     }
 
     private (OnBoardingViewModel viewModel, Mock<INavigationService> navigationService) CreateViewModel()
