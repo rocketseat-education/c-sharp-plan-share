@@ -10,7 +10,7 @@ public class TokenServiceBuilder
         var mock = new Mock<ITokenService>();
 
         mock.Setup(tokenService => tokenService.GenerateTokens(It.IsAny<User>()))
-            .ReturnsAsync(new PlanShare.Domain.Dtos.TokensDto
+            .Returns(new PlanShare.Domain.Dtos.TokensDto
         {
             Access = "mocked_access_token",
             Refresh = "mocked_refresh_token"
