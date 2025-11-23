@@ -39,10 +39,14 @@ public class PlanShareHandler : DelegatingHandler
             if (error!.TokenIsExpired)
             {
                 var result = await _useRefreshTokenUseCase.Execute();
+                if (result.IsSuccess)
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", result.Response!.AccessToken);
+                    response = await base.SendAsync(request, cancellationToken);
+                }
+                else
+                    await _navigationService.GoToOnboardingPage();
 
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", result.Response!.AccessToken);
-                response = await base.SendAsync(request, cancellationToken);
-               
             }
         }
 
