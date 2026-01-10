@@ -11,23 +11,24 @@ internal sealed class PersonAssociationRepository : IPersonAssociationReadOnlyRe
 
     public async Task<List<User>> GetPersonAssociationsForUser(User user)
     {
-        var associations = await _dbContext.PersonAssociations
-            .AsNoTracking()
-            .Include(association => association.AssociatedPerson)
-            .Include(association => association.Person)
-            .Where(association => association.PersonId == user.Id || association.AssociatedPersonId == user.Id)
-            .ToListAsync();
+        //var associations = await _dbContext.PersonAssociations
+        //    .AsNoTracking()
+        //    .Include(association => association.AssociatedPerson)
+        //    .Include(association => association.Person)
+        //    .Where(association => association.PersonId == user.Id || association.AssociatedPersonId == user.Id)
+        //    .ToListAsync();
 
-        var response = new List<User>();
+        //var response = new List<User>();
 
-        foreach (var association in associations)
-        {
-            if(association.PersonId == user.Id)
-                response.Add(association.AssociatedPerson);
-            else
-                response.Add(association.Person);
-        }
+        //foreach (var association in associations)
+        //{
+        //    if(association.PersonId == user.Id)
+        //        response.Add(association.AssociatedPerson);
+        //    else
+        //        response.Add(association.Person);
+        //}
 
-        return response;
+        //return response;
+        return null;
     }
 }
