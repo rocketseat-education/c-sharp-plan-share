@@ -25,7 +25,9 @@ public class UserConnectionsHub : Hub
     public async Task<string> GenerateCode()
     {
         var codeUserConnectionDto = await _generateCodeUserConnectionUseCase.Execute();
+
         _codeConnectionService.Start(codeUserConnectionDto, Context.ConnectionId);
+
         return codeUserConnectionDto.Code;
     }
 
@@ -35,7 +37,7 @@ public class UserConnectionsHub : Hub
 
         var response = await _joinWithCodeUseCase.Execute(userConnections.UserId);
 
-        userConnections.UserConnectionId = response.Id.ToString();
+        userConnections.ConnectingUserId = response.Id;
         userConnections.ConnectingUserConnectionId = Context.ConnectionId;
 
         await Clients.Client(userConnections.UserConnectionId).SendAsync("OnUserJoined", new ResponseConnectingUserJson
@@ -45,5 +47,11 @@ public class UserConnectionsHub : Hub
         });
     }
 
+    public async Task Cancel(string code)
+    {
+        var connection = _codeConnectionService.RemoveConnection(code);
 
+        if (connection is not null && connection.ConnectingUserId.HasValue)
+            await Clients.Client(connection.ConnectingUserConnectionId!).SendAsync("OnCancelled");
+    }
 }
