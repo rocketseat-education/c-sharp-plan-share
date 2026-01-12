@@ -6,7 +6,7 @@ namespace PlanShare.Api.Hubs.Services;
 
 public class CodeConnectionService
 {
-    private readonly Dictionary<string, UserConnectionsDto> _connections;
+    private readonly ConcurrentDictionary<string, UserConnectionsDto> _connections;
 
     public CodeConnectionService()
     {
@@ -20,6 +20,6 @@ public class CodeConnectionService
             UserId = codeUser.UserId,
             UserConnectionId = connectionId
         };
-        _connections.Add(codeUser.Code, userConnection);
+        _connections.TryAdd(codeUser.Code, userConnection);
     }
 }
