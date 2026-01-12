@@ -1,6 +1,5 @@
 ﻿using PlanShare.Domain.Dtos;
 using System.Collections.Concurrent;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace PlanShare.Api.Hubs.Services;
 
@@ -20,12 +19,14 @@ public class CodeConnectionService
             UserId = codeUser.UserId,
             UserConnectionId = connectionId
         };
+
         _connections.TryAdd(codeUser.Code, userConnection);
     }
 
     public UserConnectionsDto? GetConnectionByCode(string code)
     {
         _connections.TryGetValue(code, out var userConnection);
+
         return userConnection;
     }
 }
