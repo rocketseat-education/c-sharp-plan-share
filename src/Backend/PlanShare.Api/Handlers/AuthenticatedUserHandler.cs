@@ -27,7 +27,40 @@ public class AuthenticatedUserHandler : AuthorizationHandler<AuthenticatedUserRe
         AuthorizationHandlerContext context,
         AuthenticatedUserRequirement requirement)
     {
-        var token = TokenOnConnection(context);
+        try
+        {
+            var token = TokenOnConnection(context);
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                context.Fail();
+                return;
+            }
+
+            _accessTokenValidator.Validate(token);
+
+            var userIdentifier = _accessTokenValidator.GetUserIdentifier(token);
+
+            var user = await _repository.GetById(userIdentifier);
+            if (user is null)
+            {
+                context.Fail();
+                return;
+            }
+
+            var accessTokenId = _accessTokenValidator.GetAccessTokenIdentifier(token);
+            var existRefreshTokenAssociated = await _refreshTokenRepository.HasRefreshTokenAssociated(user, accessTokenId);
+            if (existRefreshTokenAssociated.IsFalse())
+            {
+                context.Fail();
+                return;
+            }
+
+            context.Succeed(requirement);
+        }
+        catch
+        {
+            context.Fail();
+        }
     }
 
     private static string TokenOnConnection(AuthorizationHandlerContext context)

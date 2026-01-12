@@ -11,5 +11,10 @@ public class UserConnectionsHub : Hub
         Console.WriteLine("Code received!");
         return code;
     }
+
+    public override Task OnConnectedAsync()
+    {
+        return base.OnConnectedAsync();
+    }
      
 }
