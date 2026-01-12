@@ -1,20 +1,24 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using PlanShare.Api.Hubs.Services;
 using PlanShare.Application.UseCases.User.Connection.GenerateCode;
+using PlanShare.Application.UseCases.User.Connection.JoinWithCode;
 
 namespace PlanShare.Api.Hubs;
 
 public class UserConnectionsHub : Hub
 {
     private readonly IGenerateCodeUserConnectionUseCase _generateCodeUserConnectionUseCase;
+    private readonly IJoinWithCodeUseCase _joinWithCodeUseCase;
     private readonly CodeConnectionService _codeConnectionService;
 
     public UserConnectionsHub(
         IGenerateCodeUserConnectionUseCase generateCodeUserConnectionUseCase,
+        IJoinWithCodeUseCase joinWithCodeUseCase,
         CodeConnectionService codeConnectionService)
     {
         _generateCodeUserConnectionUseCase = generateCodeUserConnectionUseCase;
         _codeConnectionService = codeConnectionService;
+        _joinWithCodeUseCase = joinWithCodeUseCase;
     }
 
     public async Task<String> GenerateCode()
@@ -24,9 +28,15 @@ public class UserConnectionsHub : Hub
         return codeUserConnectionDto.Code;
     }
 
-    public override Task OnConnectedAsync()
+    public async Task JoinWithCode(string code)
     {
-        return base.OnConnectedAsync();
+        var userConnections = _codeConnectionService.GetConnectionByCode(code);
+
+        var response = await _joinWithCodeUseCase.Execute(userConnections.UserId);
+
+        userConnections.UserConnectionId = response.Id.ToString();
+        userConnections.ConnectingUserConnectionId = Context.ConnectionId;
     }
-     
+
+
 }

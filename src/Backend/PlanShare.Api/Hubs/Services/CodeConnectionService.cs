@@ -22,4 +22,10 @@ public class CodeConnectionService
         };
         _connections.TryAdd(codeUser.Code, userConnection);
     }
+
+    public UserConnectionsDto? GetConnectionByCode(string code)
+    {
+        _connections.TryGetValue(code, out var userConnection);
+        return userConnection;
+    }
 }

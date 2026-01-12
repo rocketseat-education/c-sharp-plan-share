@@ -3,7 +3,7 @@ public class UserConnectionsDto
 {
     /// <summary>
     /// The user id who sent the invitation.
-    ///</summary>
+    /// </summary>
     public required Guid UserId { get; set; }
 
     /// <summary>
@@ -14,10 +14,10 @@ public class UserConnectionsDto
     /// <summary>
     /// The user id who received the invitation.
     /// </summary>
-    public Guid? ConnectedUserId { get; set; }
+    public Guid? ConnectingUserId { get; set; }
 
     /// <summary>
     /// The connection id of the user who received the invitation.
     /// </summary>
-    public string? ConnectedUserConnectionId { get; set; }
+    public string? ConnectingUserConnectionId { get; set; }
 }
