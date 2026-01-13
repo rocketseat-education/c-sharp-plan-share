@@ -26,14 +26,12 @@ public class UserConnectionsExceptionHubFilter : IHubFilter
         {
             var connectionId = invocationContext.Hub.Context.ConnectionId;
 
-            var code = _codeConnectionService.GetCodeByConnectionId(connectionId);
+            var code = _codeConnectionService.RemoveCodeByConnectionId(connectionId);
             if (code.NotEmpty())
             {
-                var connection = _codeConnectionService.RemoveConnection(code);
-                if (connection is not null && connection.ConnectingUserConnectionId.NotEmpty())
-                {
-                    await invocationContext.Hub.Clients.Client(connection.ConnectingUserConnectionId).SendAsync("ConnectionErrorOccurred");
-                }
+                var connection = _codeConnectionService.RemoveConnectionByCode(code);
+                if (connection is not null && connection.JoinerConnectionId.NotEmpty())
+                    await invocationContext.Hub.Clients.Client(connection.JoinerConnectionId).SendAsync("ConnectionErrorOccurred");
             }
 
             return HubOperationResult<string>.Failure(ResourceMessagesException.UNKNOWN_ERROR, UserConnectionErrorCode.Unknown);
