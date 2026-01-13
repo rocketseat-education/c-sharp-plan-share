@@ -9,9 +9,9 @@ namespace PlanShare.Api.Filters;
 
 public class UserConnectionsExceptionHubFilter : IHubFilter
 {
-    private readonly CodeConnectionService _codeConnectionService;
+    private readonly UserConnectionsService _codeConnectionService;
 
-    public UserConnectionsExceptionHubFilter(CodeConnectionService codeConnectionService)
+    public UserConnectionsExceptionHubFilter(UserConnectionsService codeConnectionService)
     {
         _codeConnectionService = codeConnectionService;
     }
