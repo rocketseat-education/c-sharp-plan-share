@@ -22,279 +22,229 @@ namespace PlanShare.Exceptions {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResourceMessagesException
-    {
-
+    public class ResourceMessagesException {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourceMessagesException()
-        {
+        internal ResourceMessagesException() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if (object.ReferenceEquals(resourceMan, null))
-                {
+        public static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PlanShare.Exceptions.ResourceMessagesException", typeof(ResourceMessagesException).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        public static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to This code is already linked to another connection. Please ask for a new one..
+        ///   Looks up a localized string similar to Este código já está vinculado a outra conexão. Solicite um novo..
         /// </summary>
-        public static string CODE_ALREADY_LINKED_ANOTHER_CONNECTION
-        {
-            get
-            {
+        public static string CODE_ALREADY_LINKED_ANOTHER_CONNECTION {
+            get {
                 return ResourceManager.GetString("CODE_ALREADY_LINKED_ANOTHER_CONNECTION", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to The e-mail is already registered on the platform..
+        ///   Looks up a localized string similar to O e-mail já tem registro na plataforma..
         /// </summary>
-        public static string EMAIL_ALREADY_REGISTERED
-        {
-            get
-            {
+        public static string EMAIL_ALREADY_REGISTERED {
+            get {
                 return ResourceManager.GetString("EMAIL_ALREADY_REGISTERED", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to E-mail cannot be empty..
+        ///   Looks up a localized string similar to E-mail não pode ser vazio..
         /// </summary>
-        public static string EMAIL_EMPTY
-        {
-            get
-            {
+        public static string EMAIL_EMPTY {
+            get {
                 return ResourceManager.GetString("EMAIL_EMPTY", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to E-mail entered is not valid..
+        ///   Looks up a localized string similar to E-mail informado não é válido..
         /// </summary>
-        public static string EMAIL_INVALID
-        {
-            get
-            {
+        public static string EMAIL_INVALID {
+            get {
                 return ResourceManager.GetString("EMAIL_INVALID", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Invalid e-mail and/or password..
+        ///   Looks up a localized string similar to E-mail e/ou senha inválidos..
         /// </summary>
-        public static string EMAIL_OR_PASSWORD_INVALID
-        {
-            get
-            {
+        public static string EMAIL_OR_PASSWORD_INVALID {
+            get {
                 return ResourceManager.GetString("EMAIL_OR_PASSWORD_INVALID", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Your session has expired. Log in again to continue..
+        ///   Looks up a localized string similar to Sua sessão expirou. Faça login novamente para continuar..
         /// </summary>
-        public static string EXPIRED_SESSION
-        {
-            get
-            {
+        public static string EXPIRED_SESSION {
+            get {
                 return ResourceManager.GetString("EXPIRED_SESSION", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Password is invalid. It must be at least 6 characters long..
+        ///   Looks up a localized string similar to A senha é inválida. Deve ter no mínimo 6 caracteres..
         /// </summary>
-        public static string INVALID_PASSWORD
-        {
-            get
-            {
+        public static string INVALID_PASSWORD {
+            get {
                 return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to A valid session could not be found. Log in to access this resource..
+        ///   Looks up a localized string similar to Não foi possível encontrar uma sessão válida. Faça login para acessar esse recurso..
         /// </summary>
-        public static string INVALID_SESSION
-        {
-            get
-            {
+        public static string INVALID_SESSION {
+            get {
                 return ResourceManager.GetString("INVALID_SESSION", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to The name cannot be empty..
+        ///   Looks up a localized string similar to O nome não pode ser vazio..
         /// </summary>
-        public static string NAME_EMPTY
-        {
-            get
-            {
+        public static string NAME_EMPTY {
+            get {
                 return ResourceManager.GetString("NAME_EMPTY", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Request don&apos;t have token..
+        ///   Looks up a localized string similar to A solicitação não tem token..
         /// </summary>
-        public static string NO_TOKEN
-        {
-            get
-            {
+        public static string NO_TOKEN {
+            get {
                 return ResourceManager.GetString("NO_TOKEN", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to No user has connected with this code..
+        ///   Looks up a localized string similar to Nenhum usuário(a) se conectou com este código..
         /// </summary>
-        public static string NO_USER_CONNECTED_WITH_CODE
-        {
-            get
-            {
+        public static string NO_USER_CONNECTED_WITH_CODE {
+            get {
                 return ResourceManager.GetString("NO_USER_CONNECTED_WITH_CODE", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Only images (PNG, JPG, JPEG) are accepted..
+        ///   Looks up a localized string similar to Somente imagens (PNG, JPG, JPEG) são aceitas..
         /// </summary>
-        public static string ONLY_IMAGES_ACCEPTED
-        {
-            get
-            {
+        public static string ONLY_IMAGES_ACCEPTED {
+            get {
                 return ResourceManager.GetString("ONLY_IMAGES_ACCEPTED", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to The current password entered does not match the one registered in the system..
+        ///   Looks up a localized string similar to A senha atual informada não corresponde à registrada no sistema..
         /// </summary>
-        public static string PASSWORD_DIFFERENT_CURRENT_PASSWORD
-        {
-            get
-            {
+        public static string PASSWORD_DIFFERENT_CURRENT_PASSWORD {
+            get {
                 return ResourceManager.GetString("PASSWORD_DIFFERENT_CURRENT_PASSWORD", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Password cannot be empty..
+        ///   Looks up a localized string similar to A senha não pode ser vazia..
         /// </summary>
-        public static string PASSWORD_EMPTY
-        {
-            get
-            {
+        public static string PASSWORD_EMPTY {
+            get {
                 return ResourceManager.GetString("PASSWORD_EMPTY", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to The provided code does not exist..
+        ///   Looks up a localized string similar to O código informado não existe..
         /// </summary>
-        public static string PROVIDED_CODE_DOES_NOT_EXIST
-        {
-            get
-            {
+        public static string PROVIDED_CODE_DOES_NOT_EXIST {
+            get {
                 return ResourceManager.GetString("PROVIDED_CODE_DOES_NOT_EXIST", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Connection not allowed: the same user cannot connect with themselves..
+        ///   Looks up a localized string similar to Não é possível realizar a conexão: o mesmo usuário(a) não pode se conectar consigo mesmo..
         /// </summary>
-        public static string SAME_USER_CANNOT_CONNECT_THEMSELVE
-        {
-            get
-            {
+        public static string SAME_USER_CANNOT_CONNECT_THEMSELVE {
+            get {
                 return ResourceManager.GetString("SAME_USER_CANNOT_CONNECT_THEMSELVE", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Unknown error..
+        ///   Looks up a localized string similar to Erro desconhecido..
         /// </summary>
-        public static string UNKNOWN_ERROR
-        {
-            get
-            {
+        public static string UNKNOWN_ERROR {
+            get {
                 return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to User not found..
+        ///   Looks up a localized string similar to Usuário(a) não encontrado..
         /// </summary>
-        public static string USER_NOT_FOUND
-        {
-            get
-            {
+        public static string USER_NOT_FOUND {
+            get {
                 return ResourceManager.GetString("USER_NOT_FOUND", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to You can&apos;t access this resource..
+        ///   Looks up a localized string similar to Você não tem permissão para acessar esse recurso..
         /// </summary>
-        public static string USER_WITHOUT_PERMISSION_ACCESS_RESOURCE
-        {
-            get
-            {
+        public static string USER_WITHOUT_PERMISSION_ACCESS_RESOURCE {
+            get {
                 return ResourceManager.GetString("USER_WITHOUT_PERMISSION_ACCESS_RESOURCE", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to The task was not found..
+        ///   Looks up a localized string similar to A tarefa não foi encontrada..
         /// </summary>
-        public static string WORK_ITEM_NOT_FOUND
-        {
-            get
-            {
+        public static string WORK_ITEM_NOT_FOUND {
+            get {
                 return ResourceManager.GetString("WORK_ITEM_NOT_FOUND", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to You’re already connected with {0}..
+        ///   Looks up a localized string similar to Você e {0} já possuem uma conexão..
         /// </summary>
-        public static string YOU_ARE_ALREADY_CONNECTED_WITH
-        {
-            get
-            {
+        public static string YOU_ARE_ALREADY_CONNECTED_WITH {
+            get {
                 return ResourceManager.GetString("YOU_ARE_ALREADY_CONNECTED_WITH", resourceCulture);
             }
         }

@@ -39,10 +39,12 @@ public class UserConnectionsHub : Hub
     public async Task<HubOperationResult<string>> JoinWithCode(string code)
     {
         var userConnections = _codeConnectionService.GetConnectionByCode(code);
+        
         if (userConnections is null)
             return HubOperationResult<string>.Failure(ResourceMessagesException.PROVIDED_CODE_DOES_NOT_EXIST, UserConnectionErrorCode.InvalidCode);
 
         var result = await _joinWithCodeUseCase.Execute(userConnections.UserId);
+
         if (result.IsSuccess.IsFalse())
             return HubOperationResult<string>.Failure(result.ErrorMessage, result.ErrorCode!.Value);
 
