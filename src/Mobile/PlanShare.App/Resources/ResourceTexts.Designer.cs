@@ -70,6 +70,15 @@ namespace PlanShare.App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred while trying to connect with {0}..
+        /// </summary>
+        public static string CONNECTION_UNEXPECTED_ERROR_WITH_USER {
+            get {
+                return ResourceManager.GetString("CONNECTION_UNEXPECTED_ERROR_WITH_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete my account.
         /// </summary>
         public static string DELETE_ACCOUNT {
@@ -84,6 +93,15 @@ namespace PlanShare.App.Resources {
         public static string DELETE_PROFILE_PICTURE {
             get {
                 return ResourceManager.GetString("DELETE_PROFILE_PICTURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while connecting. Please try again..
+        /// </summary>
+        public static string ERROR_OCCURRED_WHILE_CONNECTING {
+            get {
+                return ResourceManager.GetString("ERROR_OCCURRED_WHILE_CONNECTING", resourceCulture);
             }
         }
         
@@ -120,6 +138,15 @@ namespace PlanShare.App.Resources {
         public static string PHRASE_ALREADY_HAS_ACCOUNT {
             get {
                 return ResourceManager.GetString("PHRASE_ALREADY_HAS_ACCOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait a moment, connecting to the server….
+        /// </summary>
+        public static string PHRASE_CONNECTING_TO_THE_SERVER {
+            get {
+                return ResourceManager.GetString("PHRASE_CONNECTING_TO_THE_SERVER", resourceCulture);
             }
         }
         
@@ -196,6 +223,15 @@ namespace PlanShare.App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Waiting for approval from {0}….
+        /// </summary>
+        public static string PHRASE_WAITING_APPROVAL_FROM {
+            get {
+                return ResourceManager.GetString("PHRASE_WAITING_APPROVAL_FROM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your profile information has been successfully updated..
         /// </summary>
         public static string PROFILE_INFORMATION_SUCCESSFULLY_UPDATED {
@@ -223,6 +259,24 @@ namespace PlanShare.App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Now the other person needs to enter the code displayed below on the screen to continue. 😊.
+        /// </summary>
+        public static string SUBTITLE_CONNECTION_BY_CODE {
+            get {
+                return ResourceManager.GetString("SUBTITLE_CONNECTION_BY_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the access code displayed on the screen of the app belonging to the person who is inviting you..
+        /// </summary>
+        public static string SUBTITLE_CONNECTION_CODE {
+            get {
+                return ResourceManager.GetString("SUBTITLE_CONNECTION_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Control your routine with ease - because you deserve more time for what you love!.
         /// </summary>
         public static string SUBTITLE_REGISTER_ACCOUNT {
@@ -241,6 +295,33 @@ namespace PlanShare.App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tasks shared with.
+        /// </summary>
+        public static string TASKS_SHARED_WITH {
+            get {
+                return ResourceManager.GetString("TASKS_SHARED_WITH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} lost the connection.
+        /// </summary>
+        public static string THE_USER_WHO_GENERATED_CODE_LOST_CONNECTION {
+            get {
+                return ResourceManager.GetString("THE_USER_WHO_GENERATED_CODE_LOST_CONNECTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        public static string TITLE_ACCEPT {
+            get {
+                return ResourceManager.GetString("TITLE_ACCEPT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string TITLE_CANCEL {
@@ -250,11 +331,29 @@ namespace PlanShare.App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel operation.
+        /// </summary>
+        public static string TITLE_CANCEL_OPERATION {
+            get {
+                return ResourceManager.GetString("TITLE_CANCEL_OPERATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string TITLE_CLOSE {
             get {
                 return ResourceManager.GetString("TITLE_CLOSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection code.
+        /// </summary>
+        public static string TITLE_CONNECTION_CODE {
+            get {
+                return ResourceManager.GetString("TITLE_CONNECTION_CODE", resourceCulture);
             }
         }
         
@@ -273,6 +372,15 @@ namespace PlanShare.App.Resources {
         public static string TITLE_EMAIL {
             get {
                 return ResourceManager.GetString("TITLE_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate connection code.
+        /// </summary>
+        public static string TITLE_GENERATE_CONNECTION_CODE {
+            get {
+                return ResourceManager.GetString("TITLE_GENERATE_CONNECTION_CODE", resourceCulture);
             }
         }
         
@@ -313,6 +421,24 @@ namespace PlanShare.App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share task.
+        /// </summary>
+        public static string TITLE_SHARE_TASK {
+            get {
+                return ResourceManager.GetString("TITLE_SHARE_TASK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use a connection code.
+        /// </summary>
+        public static string TITLE_USE_CONNECTION_CODE {
+            get {
+                return ResourceManager.GetString("TITLE_USE_CONNECTION_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
         public static string TITLE_WELCOME {
@@ -345,6 +471,33 @@ namespace PlanShare.App.Resources {
         public static string UPLOAD_PHOTO {
             get {
                 return ResourceManager.GetString("UPLOAD_PHOTO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🎉 {0} joined successfully. You’re both connected!.
+        /// </summary>
+        public static string USER_JOINED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("USER_JOINED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🎉 {0} approved your connection — you’re now linked!.
+        /// </summary>
+        public static string USER_WHO_GENERATED_CODE_APPROVED_CONNECTION {
+            get {
+                return ResourceManager.GetString("USER_WHO_GENERATED_CODE_APPROVED_CONNECTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} canceled the connection request. Maybe next time!.
+        /// </summary>
+        public static string USER_WHO_GENERATED_CODE_CANCELED_CONNECTION {
+            get {
+                return ResourceManager.GetString("USER_WHO_GENERATED_CODE_CANCELED_CONNECTION", resourceCulture);
             }
         }
     }

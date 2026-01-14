@@ -118,66 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="YOU_ARE_ALREADY_CONNECTED_WITH" xml:space="preserve">
-    <value>Você e {0} já possuem uma conexão.</value>
+    <value>You’re already connected with {0}.</value>
   </data>
   <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
-    <value>O e-mail já tem registro na plataforma.</value>
+    <value>The e-mail is already registered on the platform.</value>
   </data>
   <data name="EMAIL_EMPTY" xml:space="preserve">
-    <value>E-mail não pode ser vazio.</value>
+    <value>E-mail cannot be empty.</value>
   </data>
   <data name="EMAIL_INVALID" xml:space="preserve">
-    <value>E-mail informado não é válido.</value>
+    <value>E-mail entered is not valid.</value>
   </data>
   <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
-    <value>E-mail e/ou senha inválidos.</value>
+    <value>Invalid e-mail and/or password.</value>
   </data>
   <data name="EXPIRED_SESSION" xml:space="preserve">
-    <value>Sua sessão expirou. Faça login novamente para continuar.</value>
+    <value>Your session has expired. Log in again to continue.</value>
   </data>
   <data name="INVALID_PASSWORD" xml:space="preserve">
-    <value>A senha é inválida. Deve ter no mínimo 6 caracteres.</value>
+    <value>Password is invalid. It must be at least 6 characters long.</value>
   </data>
   <data name="INVALID_SESSION" xml:space="preserve">
-    <value>Não foi possível encontrar uma sessão válida. Faça login para acessar esse recurso.</value>
+    <value>A valid session could not be found. Log in to access this resource.</value>
   </data>
   <data name="NAME_EMPTY" xml:space="preserve">
-    <value>O nome não pode ser vazio.</value>
+    <value>The name cannot be empty.</value>
   </data>
   <data name="NO_TOKEN" xml:space="preserve">
-    <value>A solicitação não tem token.</value>
+    <value>Request don't have token.</value>
   </data>
   <data name="NO_USER_CONNECTED_WITH_CODE" xml:space="preserve">
-    <value>Nenhum usuário(a) se conectou com este código.</value>
+    <value>No user has connected with this code.</value>
   </data>
   <data name="ONLY_IMAGES_ACCEPTED" xml:space="preserve">
-    <value>Somente imagens (PNG, JPG, JPEG) são aceitas.</value>
+    <value>Only images (PNG, JPG, JPEG) are accepted.</value>
   </data>
   <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
-    <value>A senha atual informada não corresponde à registrada no sistema.</value>
+    <value>The current password entered does not match the one registered in the system.</value>
   </data>
   <data name="PASSWORD_EMPTY" xml:space="preserve">
-    <value>A senha não pode ser vazia.</value>
+    <value>Password cannot be empty.</value>
   </data>
   <data name="PROVIDED_CODE_DOES_NOT_EXIST" xml:space="preserve">
-    <value>O código informado não existe.</value>
+    <value>The provided code does not exist.</value>
   </data>
   <data name="SAME_USER_CANNOT_CONNECT_THEMSELVE" xml:space="preserve">
-    <value>Não é possível realizar a conexão: o mesmo usuário(a) não pode se conectar consigo mesmo.</value>
+    <value>Connection not allowed: the same user cannot connect with themselves.</value>
   </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
-    <value>Erro desconhecido.</value>
+    <value>Unknown error.</value>
   </data>
   <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
-    <value>Você não tem permissão para acessar esse recurso.</value>
+    <value>You can't access this resource.</value>
   </data>
   <data name="WORK_ITEM_NOT_FOUND" xml:space="preserve">
-    <value>A tarefa não foi encontrada.</value>
+    <value>The task was not found.</value>
   </data>
   <data name="USER_NOT_FOUND" xml:space="preserve">
-    <value>Usuário(a) não encontrado.</value>
+    <value>User not found.</value>
   </data>
   <data name="CODE_ALREADY_LINKED_ANOTHER_CONNECTION" xml:space="preserve">
-    <value>Este código já está vinculado a outra conexão. Solicite um novo.</value>
+    <value>This code is already linked to another connection. Please ask for a new one.</value>
   </data>
 </root>

@@ -61,7 +61,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Este código já está vinculado a outra conexão. Solicite um novo..
+        ///   Looks up a localized string similar to This code is already linked to another connection. Please ask for a new one..
         /// </summary>
         public static string CODE_ALREADY_LINKED_ANOTHER_CONNECTION {
             get {
@@ -70,7 +70,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O e-mail já tem registro na plataforma..
+        ///   Looks up a localized string similar to The e-mail is already registered on the platform..
         /// </summary>
         public static string EMAIL_ALREADY_REGISTERED {
             get {
@@ -79,7 +79,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mail não pode ser vazio..
+        ///   Looks up a localized string similar to E-mail cannot be empty..
         /// </summary>
         public static string EMAIL_EMPTY {
             get {
@@ -88,7 +88,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mail informado não é válido..
+        ///   Looks up a localized string similar to E-mail entered is not valid..
         /// </summary>
         public static string EMAIL_INVALID {
             get {
@@ -97,7 +97,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mail e/ou senha inválidos..
+        ///   Looks up a localized string similar to Invalid e-mail and/or password..
         /// </summary>
         public static string EMAIL_OR_PASSWORD_INVALID {
             get {
@@ -106,7 +106,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sua sessão expirou. Faça login novamente para continuar..
+        ///   Looks up a localized string similar to Your session has expired. Log in again to continue..
         /// </summary>
         public static string EXPIRED_SESSION {
             get {
@@ -115,7 +115,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A senha é inválida. Deve ter no mínimo 6 caracteres..
+        ///   Looks up a localized string similar to Password is invalid. It must be at least 6 characters long..
         /// </summary>
         public static string INVALID_PASSWORD {
             get {
@@ -124,7 +124,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Não foi possível encontrar uma sessão válida. Faça login para acessar esse recurso..
+        ///   Looks up a localized string similar to A valid session could not be found. Log in to access this resource..
         /// </summary>
         public static string INVALID_SESSION {
             get {
@@ -133,7 +133,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O nome não pode ser vazio..
+        ///   Looks up a localized string similar to The name cannot be empty..
         /// </summary>
         public static string NAME_EMPTY {
             get {
@@ -142,7 +142,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A solicitação não tem token..
+        ///   Looks up a localized string similar to Request don&apos;t have token..
         /// </summary>
         public static string NO_TOKEN {
             get {
@@ -151,7 +151,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nenhum usuário(a) se conectou com este código..
+        ///   Looks up a localized string similar to No user has connected with this code..
         /// </summary>
         public static string NO_USER_CONNECTED_WITH_CODE {
             get {
@@ -160,7 +160,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Somente imagens (PNG, JPG, JPEG) são aceitas..
+        ///   Looks up a localized string similar to Only images (PNG, JPG, JPEG) are accepted..
         /// </summary>
         public static string ONLY_IMAGES_ACCEPTED {
             get {
@@ -169,7 +169,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A senha atual informada não corresponde à registrada no sistema..
+        ///   Looks up a localized string similar to The current password entered does not match the one registered in the system..
         /// </summary>
         public static string PASSWORD_DIFFERENT_CURRENT_PASSWORD {
             get {
@@ -178,7 +178,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A senha não pode ser vazia..
+        ///   Looks up a localized string similar to Password cannot be empty..
         /// </summary>
         public static string PASSWORD_EMPTY {
             get {
@@ -187,7 +187,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O código informado não existe..
+        ///   Looks up a localized string similar to The provided code does not exist..
         /// </summary>
         public static string PROVIDED_CODE_DOES_NOT_EXIST {
             get {
@@ -196,7 +196,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Não é possível realizar a conexão: o mesmo usuário(a) não pode se conectar consigo mesmo..
+        ///   Looks up a localized string similar to Connection not allowed: the same user cannot connect with themselves..
         /// </summary>
         public static string SAME_USER_CANNOT_CONNECT_THEMSELVE {
             get {
@@ -205,7 +205,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erro desconhecido..
+        ///   Looks up a localized string similar to Unknown error..
         /// </summary>
         public static string UNKNOWN_ERROR {
             get {
@@ -214,7 +214,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usuário(a) não encontrado..
+        ///   Looks up a localized string similar to User not found..
         /// </summary>
         public static string USER_NOT_FOUND {
             get {
@@ -223,7 +223,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Você não tem permissão para acessar esse recurso..
+        ///   Looks up a localized string similar to You can&apos;t access this resource..
         /// </summary>
         public static string USER_WITHOUT_PERMISSION_ACCESS_RESOURCE {
             get {
@@ -232,7 +232,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tarefa não foi encontrada..
+        ///   Looks up a localized string similar to The task was not found..
         /// </summary>
         public static string WORK_ITEM_NOT_FOUND {
             get {
@@ -241,7 +241,7 @@ namespace PlanShare.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Você e {0} já possuem uma conexão..
+        ///   Looks up a localized string similar to You’re already connected with {0}..
         /// </summary>
         public static string YOU_ARE_ALREADY_CONNECTED_WITH {
             get {

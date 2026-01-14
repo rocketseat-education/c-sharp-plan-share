@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PlanShare.App.Navigation;
-using PlanShare.App.UseCases.Login;
+using PlanShare.App.UseCases.Login.DoLogin;
 
 namespace PlanShare.App.ViewModels.Pages.Login.DoLogin;
 

@@ -1,11 +1,11 @@
-﻿using PlanShare.App.Models.ValueObjects;
-using PlanShare.Communication.Requests;
-using PlanShare.App.Extensions;
-using PlanShare.App.Data.Network.Api;
+﻿using PlanShare.App.Data.Network.Api;
 using PlanShare.App.Data.Storage.Preferences.User;
 using PlanShare.App.Data.Storage.SecureStorage.Tokens;
+using PlanShare.App.Extensions;
+using PlanShare.App.Models.ValueObjects;
+using PlanShare.Communication.Requests;
 
-namespace PlanShare.App.UseCases.Login;
+namespace PlanShare.App.UseCases.Login.DoLogin;
 
 public class DoLoginUseCase : IDoLoginUseCase
 {
@@ -13,11 +13,11 @@ public class DoLoginUseCase : IDoLoginUseCase
     private readonly IUserStorage _userStorage;
     private readonly ITokensStorage _tokensStorage;
 
-    public DoLoginUseCase(ILoginApi loginApi, IUserStorage userStorage, ITokensStorage tokensStorage)
+    public DoLoginUseCase(ILoginApi loginApi, ITokensStorage tokensStorage, IUserStorage userStorage)
     {
         _loginApi = loginApi;
-        _userStorage = userStorage;
         _tokensStorage = tokensStorage;
+        _userStorage = userStorage;
     }
 
     public async Task<Result> Execute(Models.Login model)
@@ -33,8 +33,7 @@ public class DoLoginUseCase : IDoLoginUseCase
         if (response.IsSuccessful)
         {
             var user = new Models.ValueObjects.User(response.Content.Id, response.Content.Name);
-            var tokens = new Models.ValueObjects.Tokens(response.Content.Tokens.AccessToken,
-                response.Content.Tokens.RefreshToken);
+            var tokens = new Models.ValueObjects.Tokens(response.Content.Tokens.AccessToken, response.Content.Tokens.RefreshToken);
 
             _userStorage.Save(user);
             await _tokensStorage.Save(tokens);
@@ -43,6 +42,7 @@ public class DoLoginUseCase : IDoLoginUseCase
         }
 
         var errorResponse = await response.Error.GetResponseError();
+
         return Result.Failure(errorResponse.Errors);
     }
 }

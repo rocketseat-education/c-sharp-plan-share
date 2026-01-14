@@ -1,6 +1,6 @@
 ﻿using PlanShare.App.Models.ValueObjects;
 
-namespace PlanShare.App.UseCases.Login;
+namespace PlanShare.App.UseCases.Login.DoLogin;
 
 public interface IDoLoginUseCase
 {

@@ -8,4 +8,8 @@ public class RoutePages
     public const string DASHBOARD_PAGE = "DashboardPage";
     public const string USER_UPDATE_PROFILE_PAGE = "UpdateUserProfilePage";
     public const string USER_CHANGE_PASSWORD_PAGE = "ChangePasswordPage";
+
+    public const string USER_CONNECTION_GENERATOR_PAGE = "UserConnectionGeneratorPage";
+    public const string USER_CODE_CONNECTION_PAGE = "UserCodeConnectionPage";
+    public const string USER_CONNECTION_JOINER_PAGE = "UserConnectionJoinerPage";
 }
