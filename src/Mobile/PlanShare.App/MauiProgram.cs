@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using PlanShare.App.Constants;
 using PlanShare.App.Data.Network;
 using PlanShare.App.Data.Network.Api;
+using PlanShare.App.Data.Network.Hubs;
 using PlanShare.App.Data.Storage.Preferences.User;
 using PlanShare.App.Data.Storage.SecureStorage.Tokens;
 using PlanShare.App.Navigation;
@@ -130,6 +131,11 @@ public static class MauiProgram
 
         appBuilder.Services.AddRefitClient<IAuthenticationApi>()
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(apiUrl));
+
+        appBuilder.Services.AddTransient<IUserConnectionByCodeClient>(config =>
+        {
+            return new UserConnectionByCodeClient(apiUrl, config.GetRequiredService<ITokensStorage>());
+        });
 
         return appBuilder;
     }
