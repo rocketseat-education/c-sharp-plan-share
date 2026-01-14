@@ -78,7 +78,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Resources\Raw\" />
 	  <Folder Include="UseCases\User\Update\" />
 	  <Folder Include="UseCases\User\Register\" />
@@ -142,6 +141,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\OnBoarding\OnBoardingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\User\Connection\UserConnectionGeneratorPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\User\Profile\UserProfilePage.xaml">

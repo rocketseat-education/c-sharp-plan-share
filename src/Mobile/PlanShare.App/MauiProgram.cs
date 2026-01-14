@@ -19,12 +19,14 @@ using PlanShare.App.ViewModels.Pages.Errors;
 using PlanShare.App.ViewModels.Pages.Login.DoLogin;
 using PlanShare.App.ViewModels.Pages.OnBoarding;
 using PlanShare.App.ViewModels.Pages.User.ChangePassword;
+using PlanShare.App.ViewModels.Pages.User.Connection;
 using PlanShare.App.ViewModels.Pages.User.Profile;
 using PlanShare.App.ViewModels.Pages.User.Register;
 using PlanShare.App.ViewModels.Popups.Connection;
 using PlanShare.App.ViewModels.Popups.Files;
 using PlanShare.App.Views.Pages.Login.DoLogin;
 using PlanShare.App.Views.Pages.User.ChangePassword;
+using PlanShare.App.Views.Pages.User.Connection;
 using PlanShare.App.Views.Pages.User.Profile;
 using PlanShare.App.Views.Pages.User.Register;
 using PlanShare.App.Views.Popups.Connection;
@@ -80,6 +82,8 @@ public static class MauiProgram
             (RoutePages.USER_UPDATE_PROFILE_PAGE);
         appBuilder.Services.AddTransientWithShellRoute<ChangeUserPasswordPage, ChangeUserPasswordViewModel>
             (RoutePages.USER_CHANGE_PASSWORD_PAGE);
+
+        appBuilder.Services.AddTransientWithShellRoute<UserConnectionGeneratorPage, UserConnectionGeneratorViewModel>(RoutePages.USER_CONNECTION_GENERATOR_PAGE);
 
         return appBuilder;
     }
