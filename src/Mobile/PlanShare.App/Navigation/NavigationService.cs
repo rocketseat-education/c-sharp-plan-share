@@ -21,6 +21,7 @@ public class NavigationService : INavigationService
     public async Task GoToAsync(ShellNavigationState state) => await Shell.Current.GoToAsync(state);
     public async Task GoToAsync(ShellNavigationState route, Dictionary<string, object> parameters)
         => await Shell.Current.GoToAsync(route, parameters);
+
     public async Task ClosePage() => await GoToAsync("..");
     public async Task GoToDashboardPage() => await GoToAsync($"//{RoutePages.DASHBOARD_PAGE}");
     public async Task GoToOnboardingPage() => await GoToAsync($"//{RoutePages.ONBOARDING_PAGE}");
@@ -49,13 +50,37 @@ public class NavigationService : INavigationService
         await snackBar.Show();
     }
 
+    public async Task ShowFailureFeedback(string message)
+    {
+        var snackBarOptions = new SnackbarOptions
+        {
+            BackgroundColor = Application.Current!.GetDangerColor(),
+            TextColor = Application.Current!.GetSecondaryColor(),
+            CornerRadius = new CornerRadius(10),
+            ActionButtonTextColor = Application.Current!.GetSecondaryColor(),
+            Font = Microsoft.Maui.Font.OfSize(FontFamily.MAIN_FONT_BLACK, 14),
+            ActionButtonFont = Microsoft.Maui.Font.OfSize(FontFamily.SECONDARY_FONT_REGULAR, 14),
+            CharacterSpacing = 0.1
+        };
+
+        var duration = TimeSpan.FromSeconds(4);
+
+        var snackBar = Snackbar.Make(message,
+            action: null,
+            actionButtonText: ResourceTexts.TITLE_CLOSE,
+            duration,
+            snackBarOptions);
+
+        await snackBar.Show();
+    }
+
     public async Task<TResult> ShowPopup<TViewModel, TResult>()
-    where TViewModel : ViewModelBaseForPopups
-    where TResult : notnull
+        where TViewModel : ViewModelBaseForPopups
+        where TResult : notnull
     {
         var popupOptions = new PopupOptions
         {
-            CanBeDismissedByTappingOutsideOfPopup = false, // Evitar que o Popup seja fechado ao clicar fora dele
+            CanBeDismissedByTappingOutsideOfPopup = false,
             Shadow = null,
             Shape = new RoundRectangle
             {

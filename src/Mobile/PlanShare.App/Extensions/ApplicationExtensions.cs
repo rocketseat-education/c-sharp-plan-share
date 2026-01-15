@@ -31,7 +31,6 @@ public static class ApplicationExtensions
         return (Color)application!.Resources[key];
     }
 
-
     public static Color GetSkeletonViewColor(this Application application)
     {
         var isLightMode = application.IsLightMode();
@@ -50,4 +49,12 @@ public static class ApplicationExtensions
         return (Color)application!.Resources[key];
     }
 
+    public static Color GetDangerColor(this Application application)
+    {
+        var isLightMode = application.IsLightMode();
+
+        var key = isLightMode ? "DANGER_ACTION_COLOR_LIGHT" : "DANGER_ACTION_COLOR_DARK";
+
+        return (Color)application!.Resources[key];
+    }
 }
