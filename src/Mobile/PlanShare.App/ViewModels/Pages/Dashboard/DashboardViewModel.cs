@@ -1,20 +1,60 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using PlanShare.App.Data.Storage.Preferences.User;
 using PlanShare.App.Models.Enums;
 using PlanShare.App.Navigation;
 using PlanShare.App.ViewModels.Popups.Connection;
 
 namespace PlanShare.App.ViewModels.Pages.Dashboard;
-
 public partial class DashboardViewModel : ViewModelBase
 {
     [ObservableProperty]
-    public string userName;
-    
-    public DashboardViewModel(IUserStorage userStorage, INavigationService navigationService) : base(navigationService)
+    public Models.Dashboard dashboard;
+
+    public DashboardViewModel(INavigationService navigationService) : base(navigationService)
     {
-        UserName = userStorage.Get().Name;
+        Dashboard = new Models.Dashboard
+        {
+            UserName = "Welisson Arley",
+            ConnectedUsers = new System.Collections.ObjectModel.ObservableCollection<Models.ConnectedUser>
+            {
+                new Models.ConnectedUser
+                {
+                    Name = "Alice Johnson",
+                },
+                new Models.ConnectedUser
+                {
+                    Name = "Bob Smith",
+                },
+                new Models.ConnectedUser
+                {
+                    Name = "Charlie Brown"
+                },
+                new Models.ConnectedUser
+                {
+                    Name = "Alice Johnson",
+                },
+                new Models.ConnectedUser
+                {
+                    Name = "Bob Smith",
+                },
+                new Models.ConnectedUser
+                {
+                    Name = "Charlie Brown"
+                },
+                new Models.ConnectedUser
+                {
+                    Name = "Alice Johnson",
+                },
+                new Models.ConnectedUser
+                {
+                    Name = "Bob Smith",
+                },
+                new Models.ConnectedUser
+                {
+                    Name = "Charlie Brown"
+                }
+            }
+        };
     }
 
     [RelayCommand]
